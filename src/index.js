@@ -17,8 +17,8 @@ class LeagueRoot extends React.Component{
             <div>
                 <h1>LeagueRoot Test dev</h1>
                 <RankingTable
-                    pickbanjson={this.state.leaguejson['pickbans']}
-                    herojson={this.state.leaguejson['heroes']}/>
+                    leaguejson = {this.state.leaguejson}
+                    />
             </div>
         );
     }

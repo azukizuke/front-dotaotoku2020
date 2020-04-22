@@ -12,9 +12,10 @@ export default class RankingTable extends React.Component {
         return(
             <div class="pickban_ranking_items">
                 <Ranking 
-                    ranking={this.props.pickbanjson[key]}
+                    ranking={this.props.leaguejson['pickbans'][key]}
+                    herojson={this.props.leaguejson['heroes']}
+                    match_num={this.props.leaguejson['match_num']}
                     mode={mode}
-                    herojson={this.props.herojson}
                     rank = {10}
                 />
             </div>
@@ -22,8 +23,6 @@ export default class RankingTable extends React.Component {
     }
 
     render(){
-        const pickbanjson = this.props.pickbanjson;
-        const herojson = this.props.herojson;
         let sort_pickbanjson = {};
         let testdict={};
         return(
@@ -47,6 +46,7 @@ class Ranking extends React.Component {
         super(props)
         this.makeRankingOutput = this.makeRankingOutput.bind(this);
         this.is_filter_role = this.is_filter_role.bind(this);
+        this.makeStats = this.makeStats.bind(this);
     }
 
     is_filter_role(heroid){
@@ -72,18 +72,34 @@ class Ranking extends React.Component {
         );
     }
 
+    makeStats(heroid){
+        let percent_all = this.props.herojson[heroid]['pickbans']['all'] * 100 / this.props.match_num;
+        let percent_pick = this.props.herojson[heroid]['pickbans']['pick'] * 100 / this.props.match_num;
+        let percent_ban = this.props.herojson[heroid]['pickbans']['ban'] * 100 / this.props.match_num;
+
+        return(
+            <div>
+                <ul>
+                    <li>all : {percent_all}%</li>
+                    <li>pick : {percent_pick}%</li>
+                    <li>ban : {percent_ban}%</li>
+                </ul>
+            </div>
+        );
+    }
+
     makeRankingOutput(filter){
         const row = [];
         var sorted_keys = this.makeSortKeys(this.props.ranking);
-        // posostion filter
         let counter = 1
         for (var key in sorted_keys){
             let heroid = sorted_keys[key]
+            // posistion filter
             if (this.is_filter_role(heroid)){
                 row.push(
                     <tr>
                         <td>{this.makeHeroImage(heroid)}</td>
-                        <td>{this.props.ranking[heroid]}</td>
+                        <td>{this.makeStats(heroid)}</td>
                     </tr>
                 );
                 counter += 1
@@ -95,7 +111,6 @@ class Ranking extends React.Component {
     }
 
     render(){
-        const ranking = this.props.ranking;
         let ranking_row = [];
         ranking_row = this.makeRankingOutput(this.props.mode);
         return(

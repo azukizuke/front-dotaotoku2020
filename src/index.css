@@ -34,5 +34,13 @@ table {
 
 th,td {
     border: solid 1px;
+    padding: 0px;
 }
 
+
+/* list */
+ul {
+   padding: 0px;
+   margin: 0px;
+   list-style-type: none
+}
