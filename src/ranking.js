@@ -27,8 +27,7 @@ export default class RankingTable extends React.Component {
         let testdict={};
         return(
             <div>
-                <h2>test ranking table Component</h2>
-                メモ:stats整理する
+                test ranking table Component
                 <div class="pickban_ranking">
                     {this.make_ranking_render("all", "pos1")}
                     {this.make_ranking_render("all", "pos2")}
@@ -115,7 +114,7 @@ class Ranking extends React.Component {
         ranking_row = this.makeRankingOutput(this.props.mode);
         return(
             <div>
-                <h3>{this.props.mode}</h3>
+                {this.props.mode}
                 <table>
                     <tr>
                         <th>heroid</th>

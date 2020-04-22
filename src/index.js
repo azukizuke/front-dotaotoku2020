@@ -4,9 +4,43 @@ import './index.css';
 import RankingTable from './ranking'
 import * as serviceWorker from './serviceWorker';
 
+class CollapsibleMenu extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            isCollapse: false,
+            title: this.props.title
+        };
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick(){
+        this.setState(state => ({
+            isCollapse: !state.isCollapse
+        }));
+    }
+
+    render(){
+        let output;
+        if (this.state.isCollapse){
+            output = null;
+        } else {
+            output =this.props.children;
+        }
+        return(
+            <div>
+                <button type="button" onClick={this.handleClick}>
+                    {this.state.title}
+                </button>
+                    {output}
+            </div>
+        );
+    }
+}
+
 class LeagueRoot extends React.Component{
     constructor(props){
-        super(props)
+        super(props);
         this.state = {
             leaguejson: require('./test.json')
         }
@@ -16,9 +50,13 @@ class LeagueRoot extends React.Component{
         return(
             <div>
                 <h1>LeagueRoot Test dev</h1>
-                <RankingTable
-                    leaguejson = {this.state.leaguejson}
+                <CollapsibleMenu
+                    title = {"collapse ranking table"}
+                >
+                    <RankingTable
+                        leaguejson = {this.state.leaguejson}
                     />
+                </CollapsibleMenu>
             </div>
         );
     }
