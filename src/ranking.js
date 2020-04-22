@@ -29,10 +29,7 @@ export default class RankingTable extends React.Component {
         return(
             <div>
                 <h2>test ranking table Component</h2>
-                メモ:各pos indexjson + python上でのランク整備
-                <br />この下のゴミ関数化しよう
-                <br />あとpropsわたして表示数変わるようにする ヘッダも
-                <br />画像はheroidと画像タグのひっつけるindexjsonと関数つくる
+                メモ:stats整理する
                 <div class="pickban_ranking">
                     {this.make_ranking_render("all", "pos1")}
                     {this.make_ranking_render("all", "pos2")}
