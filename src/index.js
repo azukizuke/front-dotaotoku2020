@@ -42,7 +42,7 @@ class LeagueRoot extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            leaguejson: require('./test.json')
+            allleaguejson: this.props.allleaguejson
         }
     }
 
@@ -54,7 +54,7 @@ class LeagueRoot extends React.Component{
                     title = {"collapse ranking table"}
                 >
                     <RankingTable
-                        leaguejson = {this.state.leaguejson}
+                        leaguejson = {this.state.allleaguejson['11863']}
                     />
                 </CollapsibleMenu>
             </div>
@@ -62,8 +62,9 @@ class LeagueRoot extends React.Component{
     }
 }
 
+let allleaguejson = require('./test.json')
 ReactDOM.render(
-  <LeagueRoot/>,
+  <LeagueRoot allleaguejson={allleaguejson} />,
   document.getElementById('root')
 );
 

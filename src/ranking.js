@@ -72,9 +72,9 @@ class Ranking extends React.Component {
     }
 
     makeStats(heroid){
-        let percent_all = this.props.herojson[heroid]['pickbans']['all'] * 100 / this.props.match_num;
-        let percent_pick = this.props.herojson[heroid]['pickbans']['pick'] * 100 / this.props.match_num;
-        let percent_ban = this.props.herojson[heroid]['pickbans']['ban'] * 100 / this.props.match_num;
+        let percent_all = parseInt(this.props.herojson[heroid]['pickbans']['all'] * 100 / this.props.match_num,10);
+        let percent_pick = parseInt(this.props.herojson[heroid]['pickbans']['pick'] * 100 / this.props.match_num,10);
+        let percent_ban = parseInt(this.props.herojson[heroid]['pickbans']['ban'] * 100 / this.props.match_num,10);
 
         return(
             <div>
