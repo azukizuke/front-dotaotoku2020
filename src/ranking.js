@@ -62,7 +62,6 @@ class Ranking extends React.Component {
     }
 
     makeHeroImage(heroid){
-        console.log(this.props.herojson[heroid]['imagefile'])
         return(
             <img
                 src={images.default[this.props.herojson[heroid]['imagefile']]}

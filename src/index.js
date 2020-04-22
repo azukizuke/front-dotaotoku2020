@@ -58,19 +58,29 @@ class LeagueRoot extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            allleaguejson: this.props.allleaguejson
+            allleaguejson: this.props.allleaguejson,
+            leagueid: '11863'
         }
+        this.handleLeagueChange = this.handleLeagueChange.bind(this)
+    }
+
+    handleLeagueChange(leagueid){
+        this.setState({leagueid: leagueid});
     }
 
     render(){
         return(
             <div>
-                <SideNav allleaguejson={this.state.allleaguejson} />
+                <SideNav
+                    allleaguejson={this.state.allleaguejson}
+                    leagueid={this.state.leagueid}
+                    onLeagueChange = {this.handleLeagueChange}
+                />
                 <div class="main">
                     <h1>LeagueRoot Test dev</h1>
                     <CollapsibleMenu title = {"collapse ranking table"}>
                         <RankingTable
-                            leaguejson = {this.state.allleaguejson['11863']}
+                            leaguejson = {this.state.allleaguejson[this.state.leagueid]}
                         />
                     </CollapsibleMenu>
                 </div>
