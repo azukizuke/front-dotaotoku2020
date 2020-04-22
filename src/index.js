@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './sidenav.css';
 import RankingTable from './ranking'
+import SideNav from './sidenav'
 import * as serviceWorker from './serviceWorker';
 
 class CollapsibleMenu extends React.Component {
@@ -38,6 +40,20 @@ class CollapsibleMenu extends React.Component {
     }
 }
 
+//class SideNav extends React.Component{
+//    constructor(props){
+//        super(props);
+//        this.state = { allleaguejson: this.props.allleaguejson}
+//    }
+//    render(){
+//        return(
+//            <div class="sidenav">
+//                test side bar
+//            </div>
+//        );
+//    }
+//}
+
 class LeagueRoot extends React.Component{
     constructor(props){
         super(props);
@@ -49,14 +65,15 @@ class LeagueRoot extends React.Component{
     render(){
         return(
             <div>
-                <h1>LeagueRoot Test dev</h1>
-                <CollapsibleMenu
-                    title = {"collapse ranking table"}
-                >
-                    <RankingTable
-                        leaguejson = {this.state.allleaguejson['11863']}
-                    />
-                </CollapsibleMenu>
+                <SideNav allleaguejson={this.state.allleaguejson} />
+                <div class="main">
+                    <h1>LeagueRoot Test dev</h1>
+                    <CollapsibleMenu title = {"collapse ranking table"}>
+                        <RankingTable
+                            leaguejson = {this.state.allleaguejson['11863']}
+                        />
+                    </CollapsibleMenu>
+                </div>
             </div>
         );
     }

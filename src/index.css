@@ -13,6 +13,11 @@ code {
 }
 
 /* div class */
+.main{
+    margin-left: 160px;
+    padding: 3px;
+}
+
 .pickban_ranking{
     display: flex;
     border: 1px solid #666;
