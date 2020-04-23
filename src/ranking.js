@@ -3,14 +3,9 @@ import ReactDOM from 'react-dom';
 import * as images from './image'
 
 export default class RankingTable extends React.Component {
-    constructor(props) {
-        super(props);
-        this.make_ranking_render = this.make_ranking_render.bind(this);
-    }
-
     make_ranking_render(key, mode){
         return(
-            <div class="pickban_ranking_items">
+            <div className="pickban_ranking_items">
                 <Ranking 
                     ranking={this.props.leaguejson['pickbans'][key]}
                     herojson={this.props.leaguejson['heroes']}
@@ -23,12 +18,10 @@ export default class RankingTable extends React.Component {
     }
 
     render(){
-        let sort_pickbanjson = {};
-        let testdict={};
         return(
             <div>
                 test ranking table Component
-                <div class="pickban_ranking">
+                <div className="pickban_ranking">
                     {this.make_ranking_render("all", "pos1")}
                     {this.make_ranking_render("all", "pos2")}
                     {this.make_ranking_render("all", "pos3")}
@@ -65,7 +58,8 @@ class Ranking extends React.Component {
         return(
             <img
                 src={images.default[this.props.herojson[heroid]['imagefile']]}
-                class="image_hero"
+                alt={heroid}
+                className="image_hero"
             />
         );
     }
@@ -95,7 +89,7 @@ class Ranking extends React.Component {
             // posistion filter
             if (this.is_filter_role(heroid)){
                 row.push(
-                    <tr>
+                    <tr key={heroid}>
                         <td>{this.makeHeroImage(heroid)}</td>
                         <td>{this.makeStats(heroid)}</td>
                     </tr>
@@ -115,11 +109,15 @@ class Ranking extends React.Component {
             <div>
                 {this.props.mode}
                 <table>
-                    <tr>
-                        <th>heroid</th>
-                        <th>stat</th>
-                    </tr>
-                    {ranking_row}
+                    <thead>
+                        <tr>
+                            <th>heroid</th>
+                            <th>stat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {ranking_row}
+                    </tbody>
                 </table>
             </div>
         );

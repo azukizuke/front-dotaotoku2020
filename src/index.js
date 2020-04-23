@@ -23,8 +23,6 @@ class LeagueRoot extends React.Component{
 
     getDatefromUNIX(unixdate){
         const date = new Date(unixdate * 1000);
-        console.log(date);
-        console.log(date.getMonth());
 
         let outstr = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
         return outstr;
@@ -39,7 +37,7 @@ class LeagueRoot extends React.Component{
                     leagueid={this.state.leagueid}
                     onLeagueChange = {this.handleLeagueChange}
                 />
-                <div class="main">
+                <div className="main">
                     <h1>leaguename : {this.state.allleaguejson[this.state.leagueid].name}</h1>
                     <h4>試合数 : {this.state.allleaguejson[this.state.leagueid].match_num}</h4>
                     <h4>最後に取得したmatch_id : {this.state.allleaguejson[this.state.leagueid].last_matchid}</h4>

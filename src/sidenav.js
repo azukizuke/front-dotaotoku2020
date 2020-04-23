@@ -1,14 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import CollapsibleMenu from './collapsiblemenu';
 
 export default class SideNav extends React.Component{
-    constructor(props){
-        super(props);
-        //this.props.allleaguejson
-    }
     render(){
         return(
-            <div class="sidenav">
+            <div className="sidenav">
                 <p>league index</p>
                 <MakeLeagueList
                     allleaguejson={this.props.allleaguejson}
@@ -22,9 +19,10 @@ export default class SideNav extends React.Component{
 class MakeLeagueList extends React.Component{
     constructor(props){
         super(props);
-        this.makeLeagueList = this.makeLeagueList.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.state = {leagueid: this.props.leagueid};
+        this.makeLeagueList = this.makeLeagueList.bind(this);
+        this.makeOutputYearList = this.makeOutputYearList.bind(this);
         //this.props.allleaguejson
     }
 
@@ -36,23 +34,58 @@ class MakeLeagueList extends React.Component{
         let row = [];
         let outstr="";
         for (var key in this.props.allleaguejson){
-            console.log(key);
-            outstr=<li><button type="button" value={key} onClick={this.handleClick}>
+            outstr=
+                   <li key={this.props.allleaguejson[key]['name']}>
+                   <button type="button" value={key} onClick={this.handleClick}>
                        {this.props.allleaguejson[key]['name']}
-                   </button></li>
+                   </button>
+                   </li>
             row.push(outstr);
-                //<button type="button" onClick={this.handleClick}>
         }
         return row;
     }
 
-    render(){
+    makeYearList(){
+        let yearlist = []; 
+        // get unique year list
+        for (var leagueid in this.props.allleaguejson){
+            if (!yearlist.includes(this.props.allleaguejson[leagueid]['year'])){
+                yearlist.push(this.props.allleaguejson[leagueid]['year']);
+            }
+        }
+        // sort year list
+        let sorted_yearlist = yearlist;
+        sorted_yearlist.sort((a, b) => (b - a));
+        return yearlist;
+    }
+
+    makeOutputYearList(){
+        const yearlist = this.makeYearList();
+        let outrow = [];
+        let outstr = "";
         let league_id_row = this.makeLeagueList();
+
+        for (var year of yearlist){
+            outstr = 
+                <li key={year}>
+                    <CollapsibleMenu title = {year}>
+                        <ul>
+                            {league_id_row}
+                        </ul>
+                    </CollapsibleMenu>
+                </li>
+            outrow.push(outstr)
+        }
+        return outrow;
+    }
+
+    render(){
+        let year_row = this.makeOutputYearList();
         return(
             <div>
-                <ul>
-                    {league_id_row}
-                </ul>
+                 <ul>
+                    {year_row}
+                 </ul>
             </div>
         );
     }
