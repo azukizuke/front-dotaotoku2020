@@ -5,5 +5,6 @@
     width: var(--sidebar-width);
     position: fixed;
     background-color: #696969;
+    padding: 0px;
 
 }
