@@ -38,7 +38,7 @@ class MakeLeagueList extends React.Component{
         for (var key in this.props.allleaguejson){
             console.log(key);
             outstr=<li><button type="button" value={key} onClick={this.handleClick}>
-                       {key}
+                       {this.props.allleaguejson[key]['name']}
                    </button></li>
             row.push(outstr);
                 //<button type="button" onClick={this.handleClick}>

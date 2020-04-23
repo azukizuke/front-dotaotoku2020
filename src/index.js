@@ -2,57 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import './sidenav.css';
-import RankingTable from './ranking'
-import SideNav from './sidenav'
+import RankingTable from './ranking';
+import SideNav from './sidenav';
+import CollapsibleMenu from './collapsiblemenu';
 import * as serviceWorker from './serviceWorker';
-
-class CollapsibleMenu extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            isCollapse: false,
-            title: this.props.title
-        };
-        this.handleClick = this.handleClick.bind(this)
-    }
-
-    handleClick(){
-        this.setState(state => ({
-            isCollapse: !state.isCollapse
-        }));
-    }
-
-    render(){
-        let output;
-        if (this.state.isCollapse){
-            output = null;
-        } else {
-            output =this.props.children;
-        }
-        return(
-            <div>
-                <button type="button" onClick={this.handleClick}>
-                    {this.state.title}
-                </button>
-                    {output}
-            </div>
-        );
-    }
-}
-
-//class SideNav extends React.Component{
-//    constructor(props){
-//        super(props);
-//        this.state = { allleaguejson: this.props.allleaguejson}
-//    }
-//    render(){
-//        return(
-//            <div class="sidenav">
-//                test side bar
-//            </div>
-//        );
-//    }
-//}
 
 class LeagueRoot extends React.Component{
     constructor(props){
@@ -68,7 +21,17 @@ class LeagueRoot extends React.Component{
         this.setState({leagueid: leagueid});
     }
 
+    getDatefromUNIX(unixdate){
+        const date = new Date(unixdate * 1000);
+        console.log(date);
+        console.log(date.getMonth());
+
+        let outstr = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+        return outstr;
+    }
+
     render(){
+        let lastdate = this.getDatefromUNIX(this.state.allleaguejson[this.state.leagueid].last_unixdate);
         return(
             <div>
                 <SideNav
@@ -77,7 +40,10 @@ class LeagueRoot extends React.Component{
                     onLeagueChange = {this.handleLeagueChange}
                 />
                 <div class="main">
-                    <h1>LeagueRoot Test dev</h1>
+                    <h1>leaguename : {this.state.allleaguejson[this.state.leagueid].name}</h1>
+                    <h4>試合数 : {this.state.allleaguejson[this.state.leagueid].match_num}</h4>
+                    <h4>最後に取得したmatch_id : {this.state.allleaguejson[this.state.leagueid].last_matchid}</h4>
+                    <h4>最終試合の日付 : {lastdate}</h4>
                     <CollapsibleMenu title = {"collapse ranking table"}>
                         <RankingTable
                             leaguejson = {this.state.allleaguejson[this.state.leagueid]}
