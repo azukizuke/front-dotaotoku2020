@@ -10,14 +10,11 @@ import * as serviceWorker from './serviceWorker';
 class LeagueRoot extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      allleaguejson: this.props.allleaguejson,
-      leagueid: '11863',
-    };
+    this.state = this.props;
     this.handleLeagueChange = this.handleLeagueChange.bind(this);
   }
 
-  getDatefromUNIX(unixdate) {
+  static getDatefromUNIX(unixdate) {
     const date = new Date(unixdate * 1000);
     const outstr = `${date.getFullYear()}-${(date.getMonth() + 1)}-${date.getDate()}`;
     return outstr;
@@ -29,7 +26,7 @@ class LeagueRoot extends React.Component {
 
   render() {
     const { allleaguejson, leagueid } = this.state;
-    const lastdate = this.getDatefromUNIX(allleaguejson[leagueid].last_unixdate);
+    const lastdate = LeagueRoot.getDatefromUNIX(allleaguejson[leagueid].last_unixdate);
     return (
       <div>
         <SideNav
@@ -54,7 +51,7 @@ class LeagueRoot extends React.Component {
             最終試合の日付 :
             {lastdate}
           </h4>
-          <CollapsibleMenu title='collapse ranking table'>
+          <CollapsibleMenu title="collapse ranking table">
             <RankingTable
               leaguejson={allleaguejson[leagueid]}
             />
@@ -68,7 +65,7 @@ class LeagueRoot extends React.Component {
 const allleaguejson = require('./test.json');
 
 ReactDOM.render(
-  <LeagueRoot allleaguejson={allleaguejson} />,
+  <LeagueRoot allleaguejson={allleaguejson} leagueid="11863" />,
   document.getElementById('root'),
 );
 

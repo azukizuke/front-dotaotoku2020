@@ -1,125 +1,161 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import * as images from './image'
+import PropTypes from 'prop-types';
+import * as images from './image';
 
 export default class RankingTable extends React.Component {
-    make_ranking_render(key, mode){
-        return(
-            <div className="pickban_ranking_items">
-                <Ranking 
-                    ranking={this.props.leaguejson['pickbans'][key]}
-                    herojson={this.props.leaguejson['heroes']}
-                    match_num={this.props.leaguejson['match_num']}
-                    mode={mode}
-                    rank = {10}
-                />
-            </div>
-        );
-    }
+  makeRankingRender(key, mode) {
+    const { leaguejson } = this.props;
+    return (
+      <div className="pickban_ranking_items">
+        <Ranking
+          ranking={leaguejson.pickbans[key]}
+          herojson={leaguejson.heroes}
+          matchNum={leaguejson.match_num}
+          mode={mode}
+          rank={10}
+        />
+      </div>
+    );
+  }
 
-    render(){
-        return(
-            <div>
-                test ranking table Component
-                <div className="pickban_ranking">
-                    {this.make_ranking_render("all", "pos1")}
-                    {this.make_ranking_render("all", "pos2")}
-                    {this.make_ranking_render("all", "pos3")}
-                    {this.make_ranking_render("all", "pos4")}
-                    {this.make_ranking_render("all", "pos5")}
-                </div>
-            </div>
-        );
-    }
+  render() {
+    return (
+      <div>
+        test ranking table Component
+        <div className="pickban_ranking">
+          {this.makeRankingRender('all', 'pos1')}
+          {this.makeRankingRender('all', 'pos2')}
+          {this.makeRankingRender('all', 'pos3')}
+          {this.makeRankingRender('all', 'pos4')}
+          {this.makeRankingRender('all', 'pos5')}
+        </div>
+      </div>
+    );
+  }
 }
+
+RankingTable.defaultProps = {
+  leaguejson: false,
+};
+
+RankingTable.propTypes = {
+  leaguejson: PropTypes.objectOf(PropTypes.number),
+};
+
 
 class Ranking extends React.Component {
-    constructor(props){
-        super(props)
-        this.makeRankingOutput = this.makeRankingOutput.bind(this);
-        this.is_filter_role = this.is_filter_role.bind(this);
-        this.makeStats = this.makeStats.bind(this);
-    }
+  static makeSortKeys(ranking) {
+    const sortedKeys = [];
+    Object.keys(ranking).map((key) => sortedKeys.push(key));
+    sortedKeys.sort((a, b) => ranking[b] - ranking[a]);
+    return sortedKeys;
+  }
 
-    is_filter_role(heroid){
-        return (this.props.herojson[heroid]['hero_role'][this.props.mode]);
-    }
+  constructor(props) {
+    super(props);
+    this.makeRankingOutput = this.makeRankingOutput.bind(this);
+    this.isFilterRole = this.isFilterRole.bind(this);
+    this.makeStats = this.makeStats.bind(this);
+  }
 
-    makeSortKeys(ranking){
-        var sorted_keys = [];
-        for (var key in ranking){
-            sorted_keys.push(key);
-        }
-        sorted_keys.sort((a,b) => ranking[b] - ranking[a]);
-        return sorted_keys;
-    }
+  isFilterRole(heroid) {
+    const { herojson, mode } = this.props;
+    return (herojson[heroid].hero_role[mode]);
+  }
 
-    makeHeroImage(heroid){
-        return(
-            <img
-                src={images.default[this.props.herojson[heroid]['imagefile']]}
-                alt={heroid}
-                className="image_hero"
-            />
+
+  makeHeroImage(heroid) {
+    const { herojson } = this.props;
+    return (
+      <img
+        src={images.default[herojson[heroid].imagefile]}
+        alt={heroid}
+        className="image_hero"
+      />
+    );
+  }
+
+  makeStats(heroid) {
+    const { herojson, matchNum } = this.props;
+    const percentAll = parseInt((herojson[heroid].pickbans.all * 100) / matchNum, 10);
+    const percentPick = parseInt((herojson[heroid].pickbans.pick * 100) / matchNum, 10);
+    const percentBan = parseInt((herojson[heroid].pickbans.ban * 100) / matchNum, 10);
+
+    const strAll = `all: ${percentAll}%`;
+    const strPick = `pick: ${percentPick}%`;
+    const strBan = `ban: ${percentBan}%`;
+
+    return (
+      <div>
+        <ul>
+          <li>{strAll}</li>
+          <li>{strPick}</li>
+          <li>{strBan}</li>
+        </ul>
+      </div>
+    );
+  }
+
+  makeRankingOutput() {
+    const row = [];
+    const { rank, ranking } = this.props;
+    const sortedKeys = Ranking.makeSortKeys(ranking);
+    let counter = 0;
+
+    sortedKeys.some((heroid) => {
+      if (this.isFilterRole(heroid)) {
+        row.push(
+          <tr key={heroid}>
+            <td>{this.makeHeroImage(heroid)}</td>
+            <td>{this.makeStats(heroid)}</td>
+          </tr>,
         );
-    }
+        counter += 1;
+      }
+      if (counter === rank) {
+        counter = 0;
+        return true;
+      }
+      return false;
+    });
+    return row;
+  }
 
-    makeStats(heroid){
-        let percent_all = parseInt(this.props.herojson[heroid]['pickbans']['all'] * 100 / this.props.match_num,10);
-        let percent_pick = parseInt(this.props.herojson[heroid]['pickbans']['pick'] * 100 / this.props.match_num,10);
-        let percent_ban = parseInt(this.props.herojson[heroid]['pickbans']['ban'] * 100 / this.props.match_num,10);
-
-        return(
-            <div>
-                <ul>
-                    <li>all : {percent_all}%</li>
-                    <li>pick : {percent_pick}%</li>
-                    <li>ban : {percent_ban}%</li>
-                </ul>
-            </div>
-        );
-    }
-
-    makeRankingOutput(filter){
-        const row = [];
-        var sorted_keys = this.makeSortKeys(this.props.ranking);
-        let counter = 1
-        for (var key in sorted_keys){
-            let heroid = sorted_keys[key]
-            // posistion filter
-            if (this.is_filter_role(heroid)){
-                row.push(
-                    <tr key={heroid}>
-                        <td>{this.makeHeroImage(heroid)}</td>
-                        <td>{this.makeStats(heroid)}</td>
-                    </tr>
-                );
-                counter += 1
-                if (counter === this.props.rank) break;
-            }
-        }
-
-        return(row);
-    }
-
-    render(){
-        let ranking_row = [];
-        ranking_row = this.makeRankingOutput(this.props.mode);
-        return(
-            <div>
-                {this.props.mode}
-                <table>
-                    <thead>
-                        <tr>
-                            <th>heroid</th>
-                            <th>stat</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {ranking_row}
-                    </tbody>
-                </table>
-            </div>
-        );
-    }
+  render() {
+    const { mode } = this.props;
+    const rankingRow = this.makeRankingOutput();
+    return (
+      <div>
+        {mode}
+        <table>
+          <thead>
+            <tr>
+              <th>heroid</th>
+              <th>stat</th>
+            </tr>
+          </thead>
+          <tbody>
+            {rankingRow}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
 }
+
+Ranking.defaultProps = {
+  mode: 'noprops',
+  rank: 99,
+  ranking: false,
+  herojson: false,
+  matchNum: 0,
+};
+
+Ranking.propTypes = {
+  ranking: PropTypes.objectOf(PropTypes.number),
+  herojson: PropTypes.objectOf(PropTypes.number),
+  matchNum: PropTypes.number,
+  mode: PropTypes.string,
+  rank: PropTypes.number,
+};

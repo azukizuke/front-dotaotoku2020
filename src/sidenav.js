@@ -1,92 +1,114 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import CollapsibleMenu from './collapsiblemenu';
 
-export default class SideNav extends React.Component{
-    render(){
-        return(
-            <div className="sidenav">
-                <p>league index</p>
-                <MakeLeagueList
-                    allleaguejson={this.props.allleaguejson}
-                    onLeagueChange = {this.props.onLeagueChange}
-                />
-            </div>
-        );
-    }
+export default class SideNav extends React.Component {
+  render() {
+    const { allleaguejson, onLeagueChange } = this.props;
+    return (
+      <div className="sidenav">
+        <p>league index</p>
+        <MakeLeagueList
+          allleaguejson={allleaguejson}
+          onLeagueChange={onLeagueChange}
+        />
+      </div>
+    );
+  }
 }
 
-class MakeLeagueList extends React.Component{
-    constructor(props){
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-        this.state = {leagueid: this.props.leagueid};
-        this.makeLeagueList = this.makeLeagueList.bind(this);
-        this.makeOutputYearList = this.makeOutputYearList.bind(this);
-        //this.props.allleaguejson
-    }
+SideNav.defaultProps = {
+  allleaguejson: false,
+  onLeagueChange: false,
+};
 
-    handleClick(e){
-        this.props.onLeagueChange(e.target.value)
-    }
+SideNav.propTypes = {
+  allleaguejson: PropTypes.shape({
+    year: PropTypes.number,
+  }),
+  onLeagueChange: PropTypes.func,
+};
 
-    makeLeagueList(){
-        let row = [];
-        let outstr="";
-        for (var key in this.props.allleaguejson){
-            outstr=
-                   <li key={this.props.allleaguejson[key]['name']}>
-                   <button type="button" value={key} onClick={this.handleClick}>
-                       {this.props.allleaguejson[key]['name']}
-                   </button>
-                   </li>
-            row.push(outstr);
-        }
-        return row;
-    }
+class MakeLeagueList extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+    this.makeLeagueList = this.makeLeagueList.bind(this);
+    this.makeOutputYearList = this.makeOutputYearList.bind(this);
+  }
 
-    makeYearList(){
-        let yearlist = []; 
-        // get unique year list
-        for (var leagueid in this.props.allleaguejson){
-            if (!yearlist.includes(this.props.allleaguejson[leagueid]['year'])){
-                yearlist.push(this.props.allleaguejson[leagueid]['year']);
-            }
-        }
-        // sort year list
-        let sorted_yearlist = yearlist;
-        sorted_yearlist.sort((a, b) => (b - a));
-        return yearlist;
-    }
+  handleClick(e) {
+    const { onLeagueChange } = this.props;
+    onLeagueChange(e.target.value);
+  }
 
-    makeOutputYearList(){
-        const yearlist = this.makeYearList();
-        let outrow = [];
-        let outstr = "";
-        let league_id_row = this.makeLeagueList();
+  makeLeagueList() {
+    const row = [];
+    const { allleaguejson } = this.props;
+    Object.entries(allleaguejson).map(([leagueid, league]) => row.push(
+      <li key={league.name}>
+        <button type="button" value={leagueid} onClick={this.handleClick}>
+          {league.name}
+        </button>
+      </li>,
+    ));
+    return row;
+  }
 
-        for (var year of yearlist){
-            outstr = 
-                <li key={year}>
-                    <CollapsibleMenu title = {year}>
-                        <ul>
-                            {league_id_row}
-                        </ul>
-                    </CollapsibleMenu>
-                </li>
-            outrow.push(outstr)
-        }
-        return outrow;
-    }
+  makeYearList() {
+    const yearlist = [];
+    const { allleaguejson } = this.props;
+    Object.values(allleaguejson).map((league) => {
+      if (!yearlist.includes(league.year)) {
+        yearlist.push(league.year);
+        return true;
+      }
+      return false;
+    });
+    // sort year list
+    const sortedYearlist = yearlist;
+    sortedYearlist.sort((a, b) => (b - a));
+    return yearlist;
+  }
 
-    render(){
-        let year_row = this.makeOutputYearList();
-        return(
-            <div>
-                 <ul>
-                    {year_row}
-                 </ul>
-            </div>
-        );
-    }
+  makeOutputYearList() {
+    const yearlist = this.makeYearList();
+    const outrow = [];
+    const leagueIdRow = this.makeLeagueList();
+
+    yearlist.map((year) => outrow.push(
+      <li key={year}>
+        <CollapsibleMenu title={year}>
+          <ul>
+            {leagueIdRow}
+          </ul>
+        </CollapsibleMenu>
+      </li>,
+    ));
+    return outrow;
+  }
+
+  render() {
+    const yearRow = this.makeOutputYearList();
+    return (
+      <div>
+        <ul>
+          {yearRow}
+        </ul>
+      </div>
+    );
+  }
 }
+
+MakeLeagueList.defaultProps = {
+  allleaguejson: false,
+  onLeagueChange: false,
+};
+
+MakeLeagueList.propTypes = {
+  allleaguejson: PropTypes.shape({
+    year: PropTypes.number,
+  }),
+  onLeagueChange: PropTypes.func,
+};
