@@ -20,7 +20,7 @@ export default class CollapsibleMenu extends React.Component {
   render() {
     let output;
     const { isCollapse } = this.state;
-    const { title, children } = this.props;
+    const { title, children, buttonClass } = this.props;
     if (isCollapse) {
       output = null;
     } else {
@@ -28,7 +28,11 @@ export default class CollapsibleMenu extends React.Component {
     }
     return (
       <div>
-        <button type="button" onClick={this.handleClick}>
+        <button
+          type="button"
+          onClick={this.handleClick}
+          className={buttonClass}
+        >
           {title}
         </button>
         {output}
@@ -40,9 +44,11 @@ export default class CollapsibleMenu extends React.Component {
 CollapsibleMenu.defaultProps = {
   children: 'none',
   title: 'none',
+  buttonClass: 'defaultButton',
 };
 
 CollapsibleMenu.propTypes = {
   children: PropTypes.node,
   title: PropTypes.string,
+  buttonClass: PropTypes.string,
 };

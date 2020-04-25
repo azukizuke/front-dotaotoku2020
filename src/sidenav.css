@@ -8,3 +8,26 @@
     padding: 0px;
 
 }
+
+.sideContent {
+}
+
+.buttonLeague {
+  cursor: pointer;
+  background-color:LightGray;
+  border: 1px solid;
+  width: 100%;
+  display: block;
+}
+
+.buttonYear {
+  background-color: #008CBA; /* Blue */
+  border: none;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+}
+
+.buttonYear:hover {
+  background-color: #008CBA; /* Blue */
+}

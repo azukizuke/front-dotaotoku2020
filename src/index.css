@@ -53,3 +53,12 @@ ul {
    margin: 0px;
    list-style-type: none
 }
+
+.defaultButton {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}

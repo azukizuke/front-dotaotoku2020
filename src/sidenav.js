@@ -43,16 +43,24 @@ class MakeLeagueList extends React.Component {
     onLeagueChange(e.target.value);
   }
 
-  makeLeagueList() {
+  makeLeagueList(year) {
     const row = [];
     const { allleaguejson } = this.props;
-    Object.entries(allleaguejson).map(([leagueid, league]) => row.push(
-      <li key={league.name}>
-        <button type="button" value={leagueid} onClick={this.handleClick}>
-          {league.name}
-        </button>
-      </li>,
-    ));
+    Object.entries(allleaguejson).map(([leagueid, league]) => {
+      if (league.year === year) {
+        row.push(
+          <button
+            type="button"
+            className="buttonLeague"
+            value={leagueid}
+            onClick={this.handleClick}
+          >
+            {league.name}
+          </button>,
+        );
+      }
+      return true;
+    });
     return row;
   }
 
@@ -75,27 +83,24 @@ class MakeLeagueList extends React.Component {
   makeOutputYearList() {
     const yearlist = this.makeYearList();
     const outrow = [];
-    const leagueIdRow = this.makeLeagueList();
 
-    yearlist.map((year) => outrow.push(
-      <li key={year}>
-        <CollapsibleMenu title={year}>
-          <ul>
-            {leagueIdRow}
-          </ul>
-        </CollapsibleMenu>
-      </li>,
-    ));
+    yearlist.map((year) => {
+      const leagueIdRow = this.makeLeagueList(year);
+      outrow.push(
+        <CollapsibleMenu title={year} buttonClass="buttonYear">
+          {leagueIdRow}
+        </CollapsibleMenu>,
+      );
+      return true;
+    });
     return outrow;
   }
 
   render() {
     const yearRow = this.makeOutputYearList();
     return (
-      <div>
-        <ul>
-          {yearRow}
-        </ul>
+      <div className="sideContent">
+        {yearRow}
       </div>
     );
   }
