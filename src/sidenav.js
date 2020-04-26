@@ -46,7 +46,18 @@ class MakeLeagueList extends React.Component {
   makeLeagueList(year) {
     const row = [];
     const { allleaguejson } = this.props;
-    Object.entries(allleaguejson).map(([leagueid, league]) => {
+    const sortedLeagueIdList = [];
+
+    //  sortList
+    Object.keys(allleaguejson).map((leagueid) => {
+      sortedLeagueIdList.push(leagueid);
+      return true;
+    });
+    sortedLeagueIdList.sort((a, b) => (b - a));
+
+    //  leagueList filter and push
+    sortedLeagueIdList.map((leagueid) => {
+      const league = allleaguejson[leagueid];
       if (league.year === year) {
         row.push(
           <button

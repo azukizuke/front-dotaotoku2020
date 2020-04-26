@@ -9,6 +9,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #fff2e6;
 }
 
 code {
@@ -18,17 +19,39 @@ code {
 
 /* div class */
 .main{
-    margin-left: var(--sidebar-width);
-    padding: 3px;
+  margin-left: var(--sidebar-width);
+  padding: 3px;
 }
 
 .pickban_ranking{
     display: flex;
-    border: 1px solid #666;
+    border: 0px solid #666;
+    width: 100%;
 }
 
 .pickban_ranking_items{
-    padding: 10px;
+    padding: 0px;
+    flex-grow: 1;
+}
+
+.pickBanBar {
+  display: flex;
+  height: 10px;
+  width: 100%;
+  background-color: rgba(100,100,100,255);
+}
+
+.pickBar {
+  background-color: rgba(0,255,0,255);
+  height: 10px;
+}
+
+.banBar {
+  background-color: rgba(255,0,0,255);
+  height: 10px;
+}
+
+.leagueStats{
 }
 
 .image_hero{
@@ -39,11 +62,32 @@ code {
 /* table class */
 table {
     border-collapse: collapse;
+    background-color: #e0e0e0;
 }  
 
+table.rankingOdd {
+    background-color: #e0e0e0;
+    width: 100%;
+}
+
+table.rankingEven {
+    background-color: #999999;
+    width: 100%;
+}
+
+table.leagueStats {
+    padding-right: 10px;
+}
+
+th,td.leagueStats {
+    text-align: left;
+    padding-right: 30px;
+}
+
 th,td {
-    border: solid 1px;
+    border-bottom: solid 1px;
     padding: 0px;
+    padding-right: 0px;
 }
 
 
@@ -61,4 +105,15 @@ ul {
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
+}
+
+.buttonMainBorder {
+  cursor: pointer;
+  background-color: #4CAF50; /* Green */
+  text-align: left;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border: 0px solid;
+  width: 100%;
+  display: block;
 }

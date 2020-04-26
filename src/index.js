@@ -13,7 +13,7 @@ class LeagueRoot extends React.Component {
     this.state = this.props;
     this.handleLeagueChange = this.handleLeagueChange.bind(this);
     this.makeLeagueOutput = this.makeLeagueOutput.bind(this);
-    this.makeStartPage = this.makeStartPage.bind(this);
+    this.makeLeagueStats = this.makeLeagueStats.bind(this);
   }
 
   static getDatefromUNIX(unixdate) {
@@ -26,7 +26,7 @@ class LeagueRoot extends React.Component {
     this.setState({ leagueid });
   }
 
-  makeStartPage() {
+  static makeStartPage() {
     return (
       <div className="main">
         <h1>start page</h1>
@@ -37,28 +37,41 @@ class LeagueRoot extends React.Component {
     );
   }
 
-  makeLeagueOutput() {
+  makeLeagueStats() {
     const { allleaguejson, leagueid } = this.state;
     const lastdate = LeagueRoot.getDatefromUNIX(allleaguejson[leagueid].last_unixdate);
-    return (
-      <div className="main">
+    return(
+      <div className="leagueStats">
         <h1>
-          leaguename :
           {allleaguejson[leagueid].name}
         </h1>
-        <h4>
-          試合数 :
-          {allleaguejson[leagueid].match_num}
-        </h4>
-        <h4>
-          最後に取得したmatch_id :
-          {allleaguejson[leagueid].last_matchid}
-        </h4>
-        <h4>
-          最終試合の日付 :
-          {lastdate}
-        </h4>
-        <CollapsibleMenu title="collapse ranking table">
+        <table className="leagueStats">
+          <tbody>
+            <tr>
+              <td className="leagueStats">試合数</td>
+              <td className="leagueStats">{allleaguejson[leagueid].match_num}</td>
+            </tr>
+            <tr>
+              <td className="leagueStats">最後に取得したmatch_id</td>
+              <td className="leagueStats">{allleaguejson[leagueid].last_matchid}</td>
+            </tr>
+            <tr >
+              <td className="leagueStats">最終試合の日付</td>
+              <td className="leagueStats">{lastdate}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+
+  makeLeagueOutput() {
+    const { allleaguejson, leagueid } = this.state;
+    const leagueStats = this.makeLeagueStats();
+    return (
+      <div className="main">
+        {leagueStats}
+        <CollapsibleMenu title="PickBan ランキング開閉" buttonClass="buttonMainBorder">
           <RankingTable
             leaguejson={allleaguejson[leagueid]}
           />
@@ -71,7 +84,7 @@ class LeagueRoot extends React.Component {
     const { allleaguejson, leagueid } = this.state;
     let mainpage;
     if (leagueid === 'startpage') {
-      mainpage = this.makeStartPage();
+      mainpage = LeagueRoot.makeStartPage();
     } else {
       mainpage = this.makeLeagueOutput();
     }
