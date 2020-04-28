@@ -49,6 +49,6 @@ CollapsibleMenu.defaultProps = {
 
 CollapsibleMenu.propTypes = {
   children: PropTypes.node,
-  title: PropTypes.string,
+  title: PropTypes.number,
   buttonClass: PropTypes.string,
 };

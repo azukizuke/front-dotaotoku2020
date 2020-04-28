@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import * as images from './image';
 
 export default class RankingTable extends React.Component {
-  makeRankingRender(key, mode, tableClass) {
+  makeRankingRender(key, title, mode, tableClass) {
     const { leaguejson } = this.props;
     return (
       <div className="pickban_ranking_items">
@@ -12,6 +12,8 @@ export default class RankingTable extends React.Component {
           ranking={leaguejson.pickbans[key]}
           herojson={leaguejson.heroes}
           matchNum={leaguejson.match_num}
+          title={title}
+          pbkey={key}
           mode={mode}
           tableClass={tableClass}
           rank={10}
@@ -24,11 +26,12 @@ export default class RankingTable extends React.Component {
     return (
       <div>
         <div className="pickban_ranking">
-          {this.makeRankingRender('all', 'pos1', 'rankingOdd')}
-          {this.makeRankingRender('all', 'pos2', 'rankingEven')}
-          {this.makeRankingRender('all', 'pos3', 'rankingOdd')}
-          {this.makeRankingRender('all', 'pos4', 'rankingEven')}
-          {this.makeRankingRender('all', 'pos5', 'rankingOdd')}
+          {this.makeRankingRender('all', 'all', 'nofilter', 'rankingOdd')}
+          {this.makeRankingRender('pos1', 'autopos1', 'nofilter', 'rankingEven')}
+          {this.makeRankingRender('pos2', 'autopos2', 'nofilter', 'rankingOdd')}
+          {this.makeRankingRender('pos3', 'autopos3', 'nofilter', 'rankingEven')}
+          {this.makeRankingRender('pos4', 'autopos4', 'nofilter', 'rankingOdd')}
+          {this.makeRankingRender('pos5', 'autopos5', 'nofilter', 'rankingEven')}
         </div>
       </div>
     );
@@ -70,6 +73,9 @@ class Ranking extends React.Component {
 
   isFilterRole(heroid) {
     const { herojson, mode } = this.props;
+    if(mode === 'nofilter') {
+        return true
+    }
     return (herojson[heroid].hero_role[mode]);
   }
 
@@ -87,25 +93,36 @@ class Ranking extends React.Component {
 
 
   makeStats(heroid) {
-    const { herojson, matchNum } = this.props;
+    const { herojson, matchNum, pbkey } = this.props;
     const percentAll = parseInt((herojson[heroid].pickbans.all * 100) / matchNum, 10);
     const percentPick = parseInt((herojson[heroid].pickbans.pick * 100) / matchNum, 10);
     const percentBan = parseInt((herojson[heroid].pickbans.ban * 100) / matchNum, 10);
+    const percentRole = parseInt((herojson[heroid].pickbans[pbkey] * 100) / matchNum, 10);
+    console.log(percentRole)
 
-    const strAll = `all: ${percentAll}%`;
-    const strPick = `pick: ${percentPick}%`;
-    const strBan = `ban: ${percentBan}%`;
+    const strAll = `${percentAll}%`;
+    const strPick = `${percentPick}%`;
+    const strBan = `${percentBan}%`;
+    const strRole = `pick: ${percentRole}%`;
 
-    return (
-      <div>
-        <ul>
-          <li>{strAll}</li>
-          <li>{strPick}</li>
-          <li>{strBan}</li>
-          <li>{Ranking.makePickBanBar(percentAll, percentPick, percentBan)}</li>
-        </ul>
-      </div>
-    );
+    if(pbkey === "all"){
+      return (
+        <div>
+          <ul>
+            <li>{strAll}-{strPick}-{strBan}</li>
+            <li>{Ranking.makePickBanBar(percentAll, percentPick, percentBan)}</li>
+          </ul>
+        </div>
+      );
+    } else {
+      return (
+        <div>
+          <ul>
+            <li>{strRole}</li>
+          </ul>
+        </div>
+      );
+    }
   }
 
   makeRankingOutput() {
@@ -134,14 +151,14 @@ class Ranking extends React.Component {
   }
 
   render() {
-    const { mode, tableClass } = this.props;
+    const { mode, tableClass, title } = this.props;
     const rankingRow = this.makeRankingOutput();
     return (
       <div>
         <table className={tableClass}>
           <thead>
             <tr>
-              <th colSpan="2">{mode}</th>
+              <th colSpan="2">{title}</th>
             </tr>
             <tr>
               <th>heroid</th>

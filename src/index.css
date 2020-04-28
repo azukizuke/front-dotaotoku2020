@@ -88,6 +88,7 @@ th,td {
     border-bottom: solid 1px;
     padding: 0px;
     padding-right: 0px;
+    min-height: 300px;
 }
 
 

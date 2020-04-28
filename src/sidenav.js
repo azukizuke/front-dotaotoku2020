@@ -53,8 +53,9 @@ class MakeLeagueList extends React.Component {
       sortedLeagueIdList.push(leagueid);
       return true;
     });
-    sortedLeagueIdList.sort((a, b) => (b - a));
-
+    sortedLeagueIdList.sort(
+      (a, b) => (allleaguejson[b].last_unixdate - allleaguejson[a].last_unixdate),
+    );
     //  leagueList filter and push
     sortedLeagueIdList.map((leagueid) => {
       const league = allleaguejson[leagueid];
