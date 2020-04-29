@@ -1,0 +1,27 @@
+.heropage {
+    background-color: rgba(200,250,250);
+    opacity: 1;
+    position: absolute;
+    left: 10%;
+    top: 10%;
+    height: 80%;
+    width: 80%;
+    z-index: -1;
+}
+
+.heroOverlay {
+    background-color: rgba(0,0,0);
+    opacity: 0.5;
+    position: absolute;
+    left: 0%;
+    top: 0%;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    cursor: pointer;
+}
+
+img.heropageImage{
+    width: 200px;
+    height: 100px;
+}

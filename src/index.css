@@ -21,6 +21,8 @@ code {
 .main{
   margin-left: var(--sidebar-width);
   padding: 3px;
+  z-index: 1;
+  background-color: #fff2e6;
 }
 
 .pickban_ranking{
@@ -54,9 +56,10 @@ code {
 .leagueStats{
 }
 
-.image_hero{
+img.image_hero{
     width: 50px;
     height: 30px;
+    cursor: pointer;
 }
 
 /* table class */

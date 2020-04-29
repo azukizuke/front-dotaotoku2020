@@ -5,7 +5,7 @@ import * as images from './image';
 
 export default class RankingTable extends React.Component {
   makeRankingRender(key, title, mode, tableClass) {
-    const { leaguejson } = this.props;
+    const { leaguejson, onClickHero } = this.props;
     return (
       <div className="pickban_ranking_items">
         <Ranking
@@ -17,6 +17,7 @@ export default class RankingTable extends React.Component {
           mode={mode}
           tableClass={tableClass}
           rank={10}
+          onClickHero={onClickHero}
         />
       </div>
     );
@@ -69,6 +70,7 @@ class Ranking extends React.Component {
     this.makeRankingOutput = this.makeRankingOutput.bind(this);
     this.isFilterRole = this.isFilterRole.bind(this);
     this.makeStats = this.makeStats.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   isFilterRole(heroid) {
@@ -79,6 +81,10 @@ class Ranking extends React.Component {
     return (herojson[heroid].hero_role[mode]);
   }
 
+  handleClick(e) {
+    const { onClickHero } = this.props;
+    onClickHero(e.target.alt);
+  }
 
   makeHeroImage(heroid) {
     const { herojson } = this.props;
@@ -86,6 +92,8 @@ class Ranking extends React.Component {
       <img
         src={images.default[herojson[heroid].imagefile]}
         alt={heroid}
+        value={heroid}
+        onClick={this.handleClick}
         className="image_hero"
       />
     );
@@ -98,7 +106,6 @@ class Ranking extends React.Component {
     const percentPick = parseInt((herojson[heroid].pickbans.pick * 100) / matchNum, 10);
     const percentBan = parseInt((herojson[heroid].pickbans.ban * 100) / matchNum, 10);
     const percentRole = parseInt((herojson[heroid].pickbans[pbkey] * 100) / matchNum, 10);
-    console.log(percentRole)
 
     const strAll = `${percentAll}%`;
     const strPick = `${percentPick}%`;
