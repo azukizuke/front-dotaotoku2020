@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line
 import ReactDOM from 'react-dom';
 import './index.css';
 import './sidenav.css';
@@ -34,7 +35,10 @@ class LeagueRoot extends React.Component {
         </ol>
         <p>各種レーン情報はopendota情報を利用しています。</p>
         <h3>各ヒーローのskill</h3>
-        <p>verごとにヒーローのスキルリストを作るのが正しいですが、めんどくさいしマイナーパッチですぐずれるので、雛形はありますが大体は試合中に取得したスキル/タレントをそのまま配列に突っ込んでいます。</p>
+        <p>
+          verごとにヒーローのスキルリストを作るのが正しいですが、めんどくさいしマイナーパッチですぐずれるので、
+          雛形はありますが大体は試合中に取得したスキル/タレントをそのまま配列に突っ込んでいます。
+        </p>
         <p>なのでアビリティの順序がよく壊れるので、気をつけてください。</p>
         <h3>その他</h3>
         <p>各試合の詳細情報はほぼ全部opendotaの情報を引っこ抜いています。ありがとうございます。</p>
@@ -43,6 +47,15 @@ class LeagueRoot extends React.Component {
         <a href="https://dotasexsex.hatenablog.com/">https://dotasexsex.hatenablog.com/</a>
       </div>
     );
+  }
+
+  static getOutputDuration(durationArr) {
+    const sumDuration = durationArr.reduce((sum, duration) => sum + duration, 0);
+    const meanDuration = parseInt(sumDuration / durationArr.length, 10);
+    const minutes = parseInt(meanDuration / 60, 10);
+    const second = parseInt(meanDuration % 60, 10);
+    const output = `${minutes}:${second}`;
+    return output;
   }
 
   constructor(props) {
@@ -78,6 +91,7 @@ class LeagueRoot extends React.Component {
   makeLeagueStats() {
     const { allleaguejson, leagueid } = this.state;
     const lastdate = LeagueRoot.getDatefromUNIX(allleaguejson[leagueid].last_unixdate);
+    const outputDuration = LeagueRoot.getOutputDuration(allleaguejson[leagueid].duration_arr);
     return (
       <div className="leagueStats">
         <h1>
@@ -96,6 +110,10 @@ class LeagueRoot extends React.Component {
             <tr>
               <td className="leagueStats">最終試合の日付</td>
               <td className="leagueStats">{lastdate}</td>
+            </tr>
+            <tr>
+              <td className="leagueStats">平均試合時間</td>
+              <td className="leagueStats">{outputDuration}</td>
             </tr>
           </tbody>
         </table>

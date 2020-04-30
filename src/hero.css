@@ -25,3 +25,14 @@ img.heropageImage{
     width: 200px;
     height: 100px;
 }
+
+table.heroSkillStats{
+}
+
+
+th,td.heroSkillStats {
+    border: solid 1px;
+    padding: 1px;
+    min-height: 300px;
+    min-width: 30px;
+}

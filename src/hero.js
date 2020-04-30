@@ -1,30 +1,82 @@
 import React from 'react';
+// eslint-disable-next-line
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import * as images from './image';
 
 export default class Hero extends React.Component {
   static outHeroStats(hero) {
-      return (
-        <div>
-          <table className="leagueStats">
-            <tbody>
-              <tr>
-                <td className="leagueStats">pick数</td>
-                <td className="leagueStats">{hero.pickbans.pick}</td>
-              </tr>
-              <tr>
-                <td className="leagueStats">ban数</td>
-                <td className="leagueStats">{hero.pickbans.ban}</td>
-              </tr>
-              <tr>
-                <td className="leagueStats">いろいろ足していく</td>
-                <td className="leagueStats"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+    const winPercent = parseInt((hero.win_stats / hero.pickbans.pick) * 100, 10);
+    const winOutput = `${winPercent}%( ${hero.pickbans.pick}試合 ${hero.win_stats}勝 )`;
+    const roleOutput = `${hero.pickbans.pos1}-${hero.pickbans.pos2}-${hero.pickbans.pos3}-${hero.pickbans.pos4}-${hero.pickbans.pos5}`;
+    return (
+      <div>
+        <table className="leagueStats">
+          <tbody>
+            <tr>
+              <td className="leagueStats">pick数</td>
+              <td className="leagueStats">{hero.pickbans.pick}</td>
+            </tr>
+            <tr>
+              <td className="leagueStats">ban数</td>
+              <td className="leagueStats">{hero.pickbans.ban}</td>
+            </tr>
+            <tr>
+              <td className="leagueStats">勝率</td>
+              <td className="leagueStats">{winOutput}</td>
+            </tr>
+            <tr>
+              <td className="leagueStats">各posPick数</td>
+              <td className="leagueStats">{roleOutput}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    );
+  }
+
+  static outputSkillStats(skillDict, skillOrder) {
+    const outputRow = [];
+    const outputHeader = [];
+    // header
+    const headerRow = [];
+    for (let i = 1; i <= 25; i += 1) {
+      headerRow.push(
+        <th className="heroSkillStats">{i}</th>,
       );
+    }
+    outputHeader.push(
+      <tr>
+        <th className="heroSkillStats">-</th>
+        {headerRow}
+      </tr>,
+    );
+    // make order ability arr
+    Object.values(skillOrder).map(
+      (skillID) => {
+        const skillrow = Object.values(skillDict[skillID]).map(
+          (count) => <td className="heroSkillStats">{count}</td>,
+        );
+        outputRow.push(
+          <tr>
+            <td className="heroSkillStats">{skillID}</td>
+            {skillrow}
+          </tr>,
+        );
+        return true;
+      },
+    );
+
+    return (
+      <table>
+        <thead>
+          {outputHeader}
+        </thead>
+        <tbody>
+          {outputRow}
+        </tbody>
+      </table>
+    );
   }
 
   constructor(props) {
@@ -69,7 +121,7 @@ export default class Hero extends React.Component {
           zIndex,
         }}
       >
-        <h2>{hero.name}</h2>
+        <h2>{hero.localized_name}</h2>
         <img
           className="heropageImage"
           src={images.default[hero.imagefile]}
@@ -77,6 +129,8 @@ export default class Hero extends React.Component {
           value={heroid}
         />
         {Hero.outHeroStats(hero)}
+        <h3>skill stats 調整中</h3>
+        {Hero.outputSkillStats(hero.skill_stats_fix, hero.ability_ids_order)}
       </div>
     );
   }

@@ -165,11 +165,11 @@ class Ranking extends React.Component {
         <table className={tableClass}>
           <thead>
             <tr>
-              <th colSpan="2">{title}</th>
+              <th className="rankingTableHeader" colSpan="2">{title}</th>
             </tr>
             <tr>
-              <th>heroid</th>
-              <th>stat</th>
+              <th className="rankingTableHeader">heroid</th>
+              <th className="rankingTableHeader">stat</th>
             </tr>
           </thead>
           <tbody>
