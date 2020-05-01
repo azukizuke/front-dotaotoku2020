@@ -42,9 +42,6 @@ class LeagueRoot extends React.Component {
         <p>なのでアビリティの順序がよく壊れるので、気をつけてください。</p>
         <h3>その他</h3>
         <p>各試合の詳細情報はほぼ全部opendotaの情報を引っこ抜いています。ありがとうございます。</p>
-        <h3>あ</h3>
-        <a href="https://twitter.com/azukizuke">https://twitter.com/azukizuke</a>
-        <a href="https://dotasexsex.hatenablog.com/">https://dotasexsex.hatenablog.com/</a>
       </div>
     );
   }
