@@ -124,6 +124,7 @@ class LeagueRoot extends React.Component {
     return (
       <div className="main">
         {leagueStats}
+        <h3>ヒーローアイコンをクリックすると色々見れるようにしました 随時追加していきます</h3>
         <CollapsibleMenu title="PickBan ランキング開閉" buttonClass="buttonMainBorder">
           <RankingTable
             leaguejson={allleaguejson[leagueid]}
