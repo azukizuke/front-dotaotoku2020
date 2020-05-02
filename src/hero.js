@@ -35,7 +35,24 @@ export default class Hero extends React.Component {
     );
   }
 
-  static outputSkillStats(skillDict, skillOrder) {
+  static makeSkillPercent(count, matchNum) {
+    const percent = parseInt((count / matchNum) * 100, 10);
+    const output = `${percent}%`;
+    const color = `rgba(250,50,50,${percent/100})`;
+    console.log(color)
+    return (
+      <td
+        className="heroSkillStats"
+        style={{
+          backgroundColor: color,
+        }}
+      >
+        {output}
+      </td>
+    );
+  }
+
+  static outputSkillStats(skillDict, skillOrder, abilityDict, hero) {
     const outputRow = [];
     const outputHeader = [];
     // header
@@ -55,11 +72,18 @@ export default class Hero extends React.Component {
     Object.values(skillOrder).map(
       (skillID) => {
         const skillrow = Object.values(skillDict[skillID]).map(
-          (count) => <td className="heroSkillStats">{count}</td>,
+          (count) => Hero.makeSkillPercent(count, hero.pickbans.pick),
         );
         outputRow.push(
           <tr>
-            <td className="heroSkillStats">{skillID}</td>
+            <td className="heroSkillStats">
+              <img
+                src={images.default[abilityDict[skillID].img]}
+                alt={skillID}
+                value={skillID}
+                className="heroSkillImage"
+              />
+            </td>
             {skillrow}
           </tr>,
         );
@@ -130,7 +154,11 @@ export default class Hero extends React.Component {
         />
         {Hero.outHeroStats(hero)}
         <h3>skill stats 調整中</h3>
-        {Hero.outputSkillStats(hero.skill_stats_fix, hero.ability_ids_order)}
+        {Hero.outputSkillStats(
+          hero.skill_stats_fix,
+          hero.ability_ids_order,
+          league.abilities, hero,
+        )}
       </div>
     );
   }
