@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import './sidenav.css';
 import './hero.css';
+import './talentStats.css';
 import RankingTable from './ranking';
 import SideNav from './sidenav';
 import CollapsibleMenu from './collapsiblemenu';
@@ -14,7 +15,10 @@ class LeagueRoot extends React.Component {
   static makeStartPage() {
     return (
       <div className="main">
-        <h1>start page</h1>
+        <h1>ウルトラお得情報ロボ2</h1>
+        <p>
+          もともと色々やっていたやつを作り直したくなったのでやっています。
+        </p>
         <p>
           左がわのアレからリーグ選択してください
           まだまだ絶賛作りまくり中なのでテストデータとかおかしなところあります。

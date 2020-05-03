@@ -2,10 +2,11 @@
     background-color: rgba(200,250,250);
     opacity: 1;
     position: absolute;
-    left: 10%;
-    top: 10%;
-    height: 80%;
-    width: 80%;
+    left: 5%;
+    top: 5%;
+    height: 90%;
+    width: 90%;
+    overflow: scroll;
     z-index: -1;
 }
 

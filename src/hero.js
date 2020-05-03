@@ -3,6 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import * as images from './image';
+import TalentStats from './talentStats';
 
 export default class Hero extends React.Component {
   static outHeroStats(hero) {
@@ -38,8 +39,7 @@ export default class Hero extends React.Component {
   static makeSkillPercent(count, matchNum) {
     const percent = parseInt((count / matchNum) * 100, 10);
     const output = `${percent}%`;
-    const color = `rgba(250,50,50,${percent/100})`;
-    console.log(color)
+    const color = `rgba(250,50,50,${percent / 100})`;
     return (
       <td
         className="heroSkillStats"
@@ -153,12 +153,17 @@ export default class Hero extends React.Component {
           value={heroid}
         />
         {Hero.outHeroStats(hero)}
-        <h3>skill stats 調整中</h3>
+        <h3>skill stats</h3>
         {Hero.outputSkillStats(
           hero.skill_stats_fix,
           hero.ability_ids_order,
           league.abilities, hero,
         )}
+        <h3>talent stats</h3>
+        <TalentStats
+          league={league}
+          heroid={heroid}
+        />
       </div>
     );
   }
