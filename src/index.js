@@ -10,6 +10,7 @@ import SideNav from './sidenav';
 import CollapsibleMenu from './collapsiblemenu';
 import * as serviceWorker from './serviceWorker';
 import Hero from './hero';
+import LeagueStats from './leagueStats';
 
 class LeagueRoot extends React.Component {
   static makeStartPage() {
@@ -95,6 +96,7 @@ class LeagueRoot extends React.Component {
     const outputDuration = LeagueRoot.getOutputDuration(allleaguejson[leagueid].duration_arr);
     return (
       <div className="leagueStats">
+        <LeagueStats league={allleaguejson[leagueid]} />
         <h1>
           {allleaguejson[leagueid].name}
         </h1>
