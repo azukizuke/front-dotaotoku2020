@@ -12,7 +12,7 @@ export default class TalentStats extends React.Component {
   static makeLevelOutput(level, talentArr, hero, league) {
     const outputArr = Object.entries(talentArr).map(
       ([talentID, count]) => {
-        const talentName = league.abilities[talentID].name;
+        const talentName = league.abilities[talentID].dname;
         const percent = parseInt((count / hero.pickbans.pick) * 100, 10);
         const color = `rgba(250,50,50,${percent / 100})`;
         return (
