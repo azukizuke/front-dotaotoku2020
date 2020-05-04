@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import * as images from './image';
 import TalentStats from './talentStats';
+import SkillStats from './skillStats';
 
 export default class Hero extends React.Component {
   static outHeroStats(hero) {
@@ -36,73 +37,6 @@ export default class Hero extends React.Component {
     );
   }
 
-  static makeSkillPercent(count, matchNum) {
-    const percent = parseInt((count / matchNum) * 100, 10);
-    const output = `${percent}%`;
-    const color = `rgba(250,50,50,${percent / 100})`;
-    return (
-      <td
-        className="heroSkillStats"
-        style={{
-          backgroundColor: color,
-        }}
-      >
-        {output}
-      </td>
-    );
-  }
-
-  static outputSkillStats(skillDict, skillOrder, abilityDict, hero) {
-    const outputRow = [];
-    const outputHeader = [];
-    // header
-    const headerRow = [];
-    for (let i = 1; i <= 25; i += 1) {
-      headerRow.push(
-        <th className="heroSkillStats">{i}</th>,
-      );
-    }
-    outputHeader.push(
-      <tr>
-        <th className="heroSkillStats">-</th>
-        {headerRow}
-      </tr>,
-    );
-    // make order ability arr
-    Object.values(skillOrder).map(
-      (skillID) => {
-        const skillrow = Object.values(skillDict[skillID]).map(
-          (count) => Hero.makeSkillPercent(count, hero.pickbans.pick),
-        );
-        outputRow.push(
-          <tr>
-            <td className="heroSkillStats">
-              <img
-                src={images.default[abilityDict[skillID].img]}
-                alt={skillID}
-                value={skillID}
-                className="heroSkillImage"
-              />
-            </td>
-            {skillrow}
-          </tr>,
-        );
-        return true;
-      },
-    );
-
-    return (
-      <table>
-        <thead>
-          {outputHeader}
-        </thead>
-        <tbody>
-          {outputRow}
-        </tbody>
-      </table>
-    );
-  }
-
   constructor(props) {
     super(props);
     this.makeHeroPage = this.makeHeroPage.bind(this);
@@ -124,7 +58,6 @@ export default class Hero extends React.Component {
       func();
     }
   }
-
 
   makeHeroPage() {
     const { heroid, isHeroPage, league } = this.props;
@@ -154,11 +87,11 @@ export default class Hero extends React.Component {
         />
         {Hero.outHeroStats(hero)}
         <h3>skill stats</h3>
-        {Hero.outputSkillStats(
-          hero.skill_stats_fix,
-          hero.ability_ids_order,
-          league.abilities, hero,
-        )}
+        <p>lv19くらいからちょっと表示が変ですがどうせタレントしかないし今はこうします。そのうち直します。</p>
+        <SkillStats
+          league={league}
+          hero={hero}
+        />
         <h3>talent stats</h3>
         <TalentStats
           league={league}

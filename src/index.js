@@ -65,7 +65,6 @@ class LeagueRoot extends React.Component {
     this.state = this.props;
     this.handleLeagueChange = this.handleLeagueChange.bind(this);
     this.makeLeagueOutput = this.makeLeagueOutput.bind(this);
-    this.makeLeagueStats = this.makeLeagueStats.bind(this);
     this.handleClickHero = this.handleClickHero.bind(this);
     this.handleClickHeroOverLay = this.handleClickHeroOverLay.bind(this);
   }
@@ -90,46 +89,11 @@ class LeagueRoot extends React.Component {
     this.setState({ isHeroPage: false });
   }
 
-  makeLeagueStats() {
-    const { allleaguejson, leagueid } = this.state;
-    const lastdate = LeagueRoot.getDatefromUNIX(allleaguejson[leagueid].last_unixdate);
-    const outputDuration = LeagueRoot.getOutputDuration(allleaguejson[leagueid].duration_arr);
-    return (
-      <div className="leagueStats">
-        <LeagueStats league={allleaguejson[leagueid]} />
-        <h1>
-          {allleaguejson[leagueid].name}
-        </h1>
-        <table className="leagueStats">
-          <tbody>
-            <tr>
-              <td className="leagueStats">試合数</td>
-              <td className="leagueStats">{allleaguejson[leagueid].match_num}</td>
-            </tr>
-            <tr>
-              <td className="leagueStats">最後に取得したmatch_id</td>
-              <td className="leagueStats">{allleaguejson[leagueid].last_matchid}</td>
-            </tr>
-            <tr>
-              <td className="leagueStats">最終試合の日付</td>
-              <td className="leagueStats">{lastdate}</td>
-            </tr>
-            <tr>
-              <td className="leagueStats">平均試合時間</td>
-              <td className="leagueStats">{outputDuration}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    );
-  }
-
   makeLeagueOutput() {
     const { allleaguejson, leagueid } = this.state;
-    const leagueStats = this.makeLeagueStats();
     return (
       <div className="main">
-        {leagueStats}
+        <LeagueStats league={allleaguejson[leagueid]} />
         <h3>ヒーローアイコンをクリックすると色々見れるようにしました 随時追加していきます</h3>
         <CollapsibleMenu title="PickBan ランキング開閉" buttonClass="buttonMainBorder">
           <RankingTable

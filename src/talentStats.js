@@ -10,10 +10,16 @@ export default class TalentStats extends React.Component {
   }
 
   static makeLevelOutput(level, talentArr, hero, league) {
+    // get sum of talent count
+    const countSum = Object.values(talentArr).reduce(
+      (sum, count) => sum + count
+    );
+
     const outputArr = Object.entries(talentArr).map(
       ([talentID, count]) => {
         const talentName = league.abilities[talentID].dname;
-        const percent = parseInt((count / hero.pickbans.pick) * 100, 10);
+        // const percent = parseInt((count / hero.pickbans.pick) * 100, 10);
+        const percent = parseInt((count / countSum) * 100, 10);
         const color = `rgba(250,50,50,${percent / 100})`;
         return (
           <td

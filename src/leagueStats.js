@@ -15,13 +15,30 @@ export default class LeagueStats extends React.Component {
 
   static getDatefromUNIX(unixdate) {
     const date = new Date(unixdate * 1000);
-    const outstr = `${date.getFullYear()}-${(date.getMonth() + 1)}-${date.getDate()}`;
+    const outstr = `${date.getFullYear()}/${(date.getMonth() + 1)}/${date.getDate()}`;
     return outstr;
+  }
+
+  static outputMatchID(matchArr) {
+    const sortArr = matchArr;
+    sortArr.sort((a, b) => (a - b));
+    const firstMatchID = sortArr[0];
+    const lastMatchID = sortArr.slice(-1)[0];
+    return (`${firstMatchID} ~ ${lastMatchID}`);
+  }
+
+  static outputDate(unixDataArr) {
+    const sortArr = unixDataArr;
+    sortArr.sort((a, b) => (a - b));
+    const firstDateOutput = LeagueStats.getDatefromUNIX(sortArr[0]);
+    const lastDateOutput = LeagueStats.getDatefromUNIX(sortArr.slice(-1)[0]);
+    return (`${firstDateOutput} ~ ${lastDateOutput}`);
   }
 
   render() {
     const { league } = this.props;
-    const lastdate = LeagueStats.getDatefromUNIX(league.last_unixdate);
+    const outputDate = LeagueStats.outputDate(league.unixdate_arr);
+    const outputMatchID = LeagueStats.outputMatchID(league.match_id_arr);
     const outputDuration = LeagueStats.getOutputDuration(league.duration_arr);
     return (
       <div className="leagueStats">
@@ -35,12 +52,12 @@ export default class LeagueStats extends React.Component {
               <td className="leagueStats">{league.match_num}</td>
             </tr>
             <tr>
-              <td className="leagueStats">最後に取得したmatch_id</td>
-              <td className="leagueStats">{league.last_matchid}</td>
+              <td className="leagueStats">match_id 計測期間</td>
+              <td className="leagueStats">{outputMatchID}</td>
             </tr>
             <tr>
-              <td className="leagueStats">最終試合の日付</td>
-              <td className="leagueStats">{lastdate}</td>
+              <td className="leagueStats">日付 計測期間</td>
+              <td className="leagueStats">{outputDate}</td>
             </tr>
             <tr>
               <td className="leagueStats">平均試合時間</td>
@@ -52,3 +69,10 @@ export default class LeagueStats extends React.Component {
     );
   }
 }
+LeagueStats.defaultProps = {
+  league: {},
+};
+
+LeagueStats.propTypes = {
+  league: PropTypes.objectOf(PropTypes.number),
+};
