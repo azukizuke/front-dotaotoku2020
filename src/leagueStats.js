@@ -48,6 +48,10 @@ export default class LeagueStats extends React.Component {
         <table className="leagueStats">
           <tbody>
             <tr>
+              <td className="leagueStats">leagueID</td>
+              <td className="leagueStats">{league.league_id}</td>
+            </tr>
+            <tr>
               <td className="leagueStats">試合数</td>
               <td className="leagueStats">{league.match_num}</td>
             </tr>
