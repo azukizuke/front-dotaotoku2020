@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import * as images from './image';
 import TalentStats from './talentStats';
 import SkillStats from './skillStats';
+import LastItemStats from './lastItemStats';
 
 export default class Hero extends React.Component {
   static outHeroStats(hero) {
@@ -96,6 +97,10 @@ export default class Hero extends React.Component {
         <TalentStats
           league={league}
           heroid={heroid}
+        />
+        <h3>last item stats</h3>
+        <LastItemStats
+          hero={hero}
         />
       </div>
     );

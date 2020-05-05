@@ -8,8 +8,7 @@ export default class LeagueStats extends React.Component {
     const sumDuration = durationArr.reduce((sum, duration) => sum + duration, 0);
     const meanDuration = parseInt(sumDuration / durationArr.length, 10);
     const minutes = parseInt(meanDuration / 60, 10);
-    const second = parseInt(meanDuration % 60, 10);
-    const output = `${minutes}:${second}`;
+    const output = `${minutes}分`;
     return output;
   }
 
@@ -35,11 +34,22 @@ export default class LeagueStats extends React.Component {
     return (`${firstDateOutput} ~ ${lastDateOutput}`);
   }
 
+  static outputRadiantWinrate(matchNum, radiantWinNum) {
+    const direWinNum = matchNum - radiantWinNum;
+    const radiantPercent = parseInt((radiantWinNum / matchNum) * 100, 10);
+    const direPercent = parseInt((direWinNum / matchNum) * 100, 10);
+    return `${radiantPercent}% - ${direPercent}%`;
+  }
+
   render() {
     const { league } = this.props;
     const outputDate = LeagueStats.outputDate(league.unixdate_arr);
     const outputMatchID = LeagueStats.outputMatchID(league.match_id_arr);
     const outputDuration = LeagueStats.getOutputDuration(league.duration_arr);
+    const outputRadiantWinrate = LeagueStats.outputRadiantWinrate(
+      league.match_num,
+      league.radiant_win_num,
+    );
     return (
       <div className="leagueStats">
         <h1>
@@ -66,6 +76,10 @@ export default class LeagueStats extends React.Component {
             <tr>
               <td className="leagueStats">平均試合時間</td>
               <td className="leagueStats">{outputDuration}</td>
+            </tr>
+            <tr>
+              <td className="leagueStats">Radiant-Dire 勝率</td>
+              <td className="leagueStats">{outputRadiantWinrate}</td>
             </tr>
           </tbody>
         </table>
