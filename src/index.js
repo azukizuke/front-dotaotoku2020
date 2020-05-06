@@ -5,6 +5,8 @@ import './index.css';
 import './sidenav.css';
 import './hero.css';
 import './talentStats.css';
+import './lastItemStats.css';
+import './startItemStats.css';
 import RankingTable from './ranking';
 import SideNav from './sidenav';
 import CollapsibleMenu from './collapsiblemenu';

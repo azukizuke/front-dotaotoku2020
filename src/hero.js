@@ -6,6 +6,8 @@ import * as images from './image';
 import TalentStats from './talentStats';
 import SkillStats from './skillStats';
 import LastItemStats from './lastItemStats';
+import StartItemStats from './startItemStats';
+import NeutralItemStats from './neutralItemStats';
 
 export default class Hero extends React.Component {
   static outHeroStats(hero) {
@@ -100,6 +102,17 @@ export default class Hero extends React.Component {
         />
         <h3>last item stats</h3>
         <LastItemStats
+          league={league}
+          hero={hero}
+        />
+        <h3>start item stats</h3>
+        <StartItemStats
+          league={league}
+          hero={hero}
+        />
+        <h3>neutral item stats</h3>
+        <NeutralItemStats
+          league={league}
           hero={hero}
         />
       </div>

@@ -722,6 +722,244 @@ import zuus_lightning_bolt_lg from './media/abilities/zuus_lightning_bolt_lg.png
 import zuus_static_field_lg from './media/abilities/zuus_static_field_lg.png';
 import zuus_thundergods_wrath_lg from './media/abilities/zuus_thundergods_wrath_lg.png';
 import talent from './media/abilities/talent.png';
+// Items
+import abyssal_blade_lg from './media/items/abyssal_blade_lg.png';
+import aegis_lg from './media/items/aegis_lg.png';
+import aeon_disk_lg from './media/items/aeon_disk_lg.png';
+import aether_lens_lg from './media/items/aether_lens_lg.png';
+import ancient_janggo_lg from './media/items/ancient_janggo_lg.png';
+import arcane_boots_lg from './media/items/arcane_boots_lg.png';
+import armlet_lg from './media/items/armlet_lg.png';
+import assault_lg from './media/items/assault_lg.png';
+import basher_lg from './media/items/basher_lg.png';
+import belt_of_strength_lg from './media/items/belt_of_strength_lg.png';
+import bfury_lg from './media/items/bfury_lg.png';
+import black_king_bar_lg from './media/items/black_king_bar_lg.png';
+import blade_mail_lg from './media/items/blade_mail_lg.png';
+import blade_of_alacrity_lg from './media/items/blade_of_alacrity_lg.png';
+import blades_of_attack_lg from './media/items/blades_of_attack_lg.png';
+import blight_stone_lg from './media/items/blight_stone_lg.png';
+import blink_lg from './media/items/blink_lg.png';
+import bloodstone_lg from './media/items/bloodstone_lg.png';
+import bloodthorn_lg from './media/items/bloodthorn_lg.png';
+import boots_lg from './media/items/boots_lg.png';
+import boots_of_elves_lg from './media/items/boots_of_elves_lg.png';
+import bottle_lg from './media/items/bottle_lg.png';
+import bracer_lg from './media/items/bracer_lg.png';
+import branches_lg from './media/items/branches_lg.png';
+import broadsword_lg from './media/items/broadsword_lg.png';
+import buckler_lg from './media/items/buckler_lg.png';
+import butterfly_lg from './media/items/butterfly_lg.png';
+import chainmail_lg from './media/items/chainmail_lg.png';
+import cheese_lg from './media/items/cheese_lg.png';
+import circlet_lg from './media/items/circlet_lg.png';
+import clarity_lg from './media/items/clarity_lg.png';
+import claymore_lg from './media/items/claymore_lg.png';
+import cloak_lg from './media/items/cloak_lg.png';
+import combo_breaker_lg from './media/items/combo_breaker_lg.png';
+import courier_lg from './media/items/courier_lg.png';
+import crimson_guard_lg from './media/items/crimson_guard_lg.png';
+import crown_lg from './media/items/crown_lg.png';
+import cyclone_lg from './media/items/cyclone_lg.png';
+import dagon_2_lg from './media/items/dagon_2_lg.png';
+import dagon_3_lg from './media/items/dagon_3_lg.png';
+import dagon_4_lg from './media/items/dagon_4_lg.png';
+import dagon_5_lg from './media/items/dagon_5_lg.png';
+import dagon_lg from './media/items/dagon_lg.png';
+import demon_edge_lg from './media/items/demon_edge_lg.png';
+import desolator_lg from './media/items/desolator_lg.png';
+import diffusal_blade_2_lg from './media/items/diffusal_blade_2_lg.png';
+import diffusal_blade_lg from './media/items/diffusal_blade_lg.png';
+import dragon_lance_lg from './media/items/dragon_lance_lg.png';
+import dust_lg from './media/items/dust_lg.png';
+import eagle_lg from './media/items/eagle_lg.png';
+import echo_sabre_lg from './media/items/echo_sabre_lg.png';
+import enchanted_mango_lg from './media/items/enchanted_mango_lg.png';
+import energy_booster_lg from './media/items/energy_booster_lg.png';
+import ethereal_blade_lg from './media/items/ethereal_blade_lg.png';
+import faerie_fire_lg from './media/items/faerie_fire_lg.png';
+import flask_lg from './media/items/flask_lg.png';
+import flying_courier_lg from './media/items/flying_courier_lg.png';
+import force_staff_lg from './media/items/force_staff_lg.png';
+import gauntlets_lg from './media/items/gauntlets_lg.png';
+import gem_lg from './media/items/gem_lg.png';
+import ghost_lg from './media/items/ghost_lg.png';
+import glimmer_cape_lg from './media/items/glimmer_cape_lg.png';
+import gloves_lg from './media/items/gloves_lg.png';
+import greater_crit_lg from './media/items/greater_crit_lg.png';
+import greevil_whistle_lg from './media/items/greevil_whistle_lg.png';
+import greevil_whistle_toggle_lg from './media/items/greevil_whistle_toggle_lg.png';
+import guardian_greaves_lg from './media/items/guardian_greaves_lg.png';
+import halloween_candy_corn_lg from './media/items/halloween_candy_corn_lg.png';
+import halloween_rapier_lg from './media/items/halloween_rapier_lg.png';
+import hand_of_midas_lg from './media/items/hand_of_midas_lg.png';
+import headdress_lg from './media/items/headdress_lg.png';
+import heart_lg from './media/items/heart_lg.png';
+import heavens_halberd_lg from './media/items/heavens_halberd_lg.png';
+import helm_of_iron_will_lg from './media/items/helm_of_iron_will_lg.png';
+import helm_of_the_dominator_lg from './media/items/helm_of_the_dominator_lg.png';
+import holy_locket_lg from './media/items/holy_locket_lg.png';
+import hood_of_defiance_lg from './media/items/hood_of_defiance_lg.png';
+import hurricane_pike_lg from './media/items/hurricane_pike_lg.png';
+import hyperstone_lg from './media/items/hyperstone_lg.png';
+import infused_raindrop_lg from './media/items/infused_raindrop_lg.png';
+import invis_sword_lg from './media/items/invis_sword_lg.png';
+import iron_talon_lg from './media/items/iron_talon_lg.png';
+import javelin_lg from './media/items/javelin_lg.png';
+import kaya_and_sange_lg from './media/items/kaya_and_sange_lg.png';
+import kaya_lg from './media/items/kaya_lg.png';
+import lesser_crit_lg from './media/items/lesser_crit_lg.png';
+import lifesteal_lg from './media/items/lifesteal_lg.png';
+import lotus_orb_lg from './media/items/lotus_orb_lg.png';
+import maelstrom_lg from './media/items/maelstrom_lg.png';
+import magic_stick_lg from './media/items/magic_stick_lg.png';
+import magic_wand_lg from './media/items/magic_wand_lg.png';
+import manta_lg from './media/items/manta_lg.png';
+import mantle_lg from './media/items/mantle_lg.png';
+import mask_of_madness_lg from './media/items/mask_of_madness_lg.png';
+import medallion_of_courage_lg from './media/items/medallion_of_courage_lg.png';
+import mekansm_lg from './media/items/mekansm_lg.png';
+import meteor_hammer_lg from './media/items/meteor_hammer_lg.png';
+import mithril_hammer_lg from './media/items/mithril_hammer_lg.png';
+import mjollnir_lg from './media/items/mjollnir_lg.png';
+import monkey_king_bar_lg from './media/items/monkey_king_bar_lg.png';
+import moon_shard_lg from './media/items/moon_shard_lg.png';
+import mystery_arrow_lg from './media/items/mystery_arrow_lg.png';
+import mystery_hook_lg from './media/items/mystery_hook_lg.png';
+import mystery_missile_lg from './media/items/mystery_missile_lg.png';
+import mystery_toss_lg from './media/items/mystery_toss_lg.png';
+import mystery_vacuum_lg from './media/items/mystery_vacuum_lg.png';
+import mystic_staff_lg from './media/items/mystic_staff_lg.png';
+import necronomicon_2_lg from './media/items/necronomicon_2_lg.png';
+import necronomicon_3_lg from './media/items/necronomicon_3_lg.png';
+import necronomicon_lg from './media/items/necronomicon_lg.png';
+import nullifier_lg from './media/items/nullifier_lg.png';
+import null_talisman_lg from './media/items/null_talisman_lg.png';
+import oblivion_staff_lg from './media/items/oblivion_staff_lg.png';
+import octarine_core_lg from './media/items/octarine_core_lg.png';
+import ogre_axe_lg from './media/items/ogre_axe_lg.png';
+import orb_of_venom_lg from './media/items/orb_of_venom_lg.png';
+import orchid_lg from './media/items/orchid_lg.png';
+import pers_lg from './media/items/pers_lg.png';
+import phase_boots_lg from './media/items/phase_boots_lg.png';
+import pipe_lg from './media/items/pipe_lg.png';
+import platemail_lg from './media/items/platemail_lg.png';
+import point_booster_lg from './media/items/point_booster_lg.png';
+import poor_mans_shield_lg from './media/items/poor_mans_shield_lg.png';
+import power_treads_lg from './media/items/power_treads_lg.png';
+import present_lg from './media/items/present_lg.png';
+import quarterstaff_lg from './media/items/quarterstaff_lg.png';
+import quelling_blade_lg from './media/items/quelling_blade_lg.png';
+import radiance_lg from './media/items/radiance_lg.png';
+import rapier_lg from './media/items/rapier_lg.png';
+import reaver_lg from './media/items/reaver_lg.png';
+import recipe_abyssal_blade_lg from './media/items/recipe_abyssal_blade_lg.png';
+import recipe_ancient_janggo_lg from './media/items/recipe_ancient_janggo_lg.png';
+import recipe_armlet_lg from './media/items/recipe_armlet_lg.png';
+import recipe_assault_lg from './media/items/recipe_assault_lg.png';
+import recipe_basher_lg from './media/items/recipe_basher_lg.png';
+import recipe_bfury_lg from './media/items/recipe_bfury_lg.png';
+import recipe_black_king_bar_lg from './media/items/recipe_black_king_bar_lg.png';
+import recipe_bloodstone_lg from './media/items/recipe_bloodstone_lg.png';
+import recipe_bracer_lg from './media/items/recipe_bracer_lg.png';
+import recipe_buckler_lg from './media/items/recipe_buckler_lg.png';
+import recipe_cyclone_lg from './media/items/recipe_cyclone_lg.png';
+import recipe_dagon_lg from './media/items/recipe_dagon_lg.png';
+import recipe_diffusal_blade_lg from './media/items/recipe_diffusal_blade_lg.png';
+import recipe_force_staff_lg from './media/items/recipe_force_staff_lg.png';
+import recipe_greater_crit_lg from './media/items/recipe_greater_crit_lg.png';
+import recipe_hand_of_midas_lg from './media/items/recipe_hand_of_midas_lg.png';
+import recipe_headdress_lg from './media/items/recipe_headdress_lg.png';
+import recipe_heart_lg from './media/items/recipe_heart_lg.png';
+import recipe_lesser_crit_lg from './media/items/recipe_lesser_crit_lg.png';
+import recipe_lg from './media/items/recipe_lg.png';
+import recipe_maelstrom_lg from './media/items/recipe_maelstrom_lg.png';
+import recipe_magic_wand_lg from './media/items/recipe_magic_wand_lg.png';
+import recipe_manta_lg from './media/items/recipe_manta_lg.png';
+import recipe_mekansm_lg from './media/items/recipe_mekansm_lg.png';
+import recipe_mjollnir_lg from './media/items/recipe_mjollnir_lg.png';
+import recipe_necronomicon_lg from './media/items/recipe_necronomicon_lg.png';
+import recipe_null_talisman_lg from './media/items/recipe_null_talisman_lg.png';
+import recipe_orchid_lg from './media/items/recipe_orchid_lg.png';
+import recipe_pipe_lg from './media/items/recipe_pipe_lg.png';
+import recipe_radiance_lg from './media/items/recipe_radiance_lg.png';
+import recipe_refresher_lg from './media/items/recipe_refresher_lg.png';
+import recipe_rod_of_atos_lg from './media/items/recipe_rod_of_atos_lg.png';
+import recipe_sange_lg from './media/items/recipe_sange_lg.png';
+import recipe_shivas_guard_lg from './media/items/recipe_shivas_guard_lg.png';
+import recipe_soul_ring_lg from './media/items/recipe_soul_ring_lg.png';
+import recipe_sphere_lg from './media/items/recipe_sphere_lg.png';
+import recipe_travel_boots_lg from './media/items/recipe_travel_boots_lg.png';
+import recipe_urn_of_shadows_lg from './media/items/recipe_urn_of_shadows_lg.png';
+import recipe_veil_of_discord_lg from './media/items/recipe_veil_of_discord_lg.png';
+import recipe_vladmir_lg from './media/items/recipe_vladmir_lg.png';
+import recipe_wraith_band_lg from './media/items/recipe_wraith_band_lg.png';
+import recipe_yasha_lg from './media/items/recipe_yasha_lg.png';
+import refresher_lg from './media/items/refresher_lg.png';
+import refresher_shard_lg from './media/items/refresher_shard_lg.png';
+import refresher_shard from './media/items/refresher_shard.png';
+import relic_lg from './media/items/relic_lg.png';
+import ring_of_aquila_lg from './media/items/ring_of_aquila_lg.png';
+import ring_of_basilius_lg from './media/items/ring_of_basilius_lg.png';
+import ring_of_health_lg from './media/items/ring_of_health_lg.png';
+import ring_of_protection_lg from './media/items/ring_of_protection_lg.png';
+import ring_of_regen_lg from './media/items/ring_of_regen_lg.png';
+import ring_of_tarrasque_lg from './media/items/ring_of_tarrasque_lg.png';
+import robe_lg from './media/items/robe_lg.png';
+import rod_of_atos_lg from './media/items/rod_of_atos_lg.png';
+import sange_and_yasha_lg from './media/items/sange_and_yasha_lg.png';
+import sange_lg from './media/items/sange_lg.png';
+import satanic_lg from './media/items/satanic_lg.png';
+import shadow_amulet_lg from './media/items/shadow_amulet_lg.png';
+import sheepstick_lg from './media/items/sheepstick_lg.png';
+import shivas_guard_lg from './media/items/shivas_guard_lg.png';
+import silver_edge_lg from './media/items/silver_edge_lg.png';
+import skadi_lg from './media/items/skadi_lg.png';
+import slippers_lg from './media/items/slippers_lg.png';
+import smoke_of_deceit_lg from './media/items/smoke_of_deceit_lg.png';
+import sobi_mask_lg from './media/items/sobi_mask_lg.png';
+import solar_crest_lg from './media/items/solar_crest_lg.png';
+import soul_booster_lg from './media/items/soul_booster_lg.png';
+import soul_ring_lg from './media/items/soul_ring_lg.png';
+import sphere_lg from './media/items/sphere_lg.png';
+import spirit_vessel_lg from './media/items/spirit_vessel_lg.png';
+import staff_of_wizardry_lg from './media/items/staff_of_wizardry_lg.png';
+import stout_shield_lg from './media/items/stout_shield_lg.png';
+import talisman_of_evasion_lg from './media/items/talisman_of_evasion_lg.png';
+import tango_lg from './media/items/tango_lg.png';
+import tango_single_lg from './media/items/tango_single_lg.png';
+import tome_of_knowledge_lg from './media/items/tome_of_knowledge_lg.png';
+import tpscroll_lg from './media/items/tpscroll_lg.png';
+import tranquil_boots_lg from './media/items/tranquil_boots_lg.png';
+import travel_boots_2_lg from './media/items/travel_boots_2_lg.png';
+import travel_boots_lg from './media/items/travel_boots_lg.png';
+import trident_lg from './media/items/trident_lg.png';
+import ultimate_orb_lg from './media/items/ultimate_orb_lg.png';
+import ultimate_scepter_lg from './media/items/ultimate_scepter_lg.png';
+import urn_of_shadows_lg from './media/items/urn_of_shadows_lg.png';
+import vanguard_lg from './media/items/vanguard_lg.png';
+import veil_of_discord_lg from './media/items/veil_of_discord_lg.png';
+import vitality_booster_lg from './media/items/vitality_booster_lg.png';
+import vladmir_lg from './media/items/vladmir_lg.png';
+import void_stone_lg from './media/items/void_stone_lg.png';
+import ward_dispenser_lg from './media/items/ward_dispenser_lg.png';
+import ward_observer_lg from './media/items/ward_observer_lg.png';
+import ward_sentry_lg from './media/items/ward_sentry_lg.png';
+import wind_lace_lg from './media/items/wind_lace_lg.png';
+import winter_cake_lg from './media/items/winter_cake_lg.png';
+import winter_coco_lg from './media/items/winter_coco_lg.png';
+import winter_cookie_lg from './media/items/winter_cookie_lg.png';
+import winter_greevil_chewy_lg from './media/items/winter_greevil_chewy_lg.png';
+import winter_greevil_garbage_lg from './media/items/winter_greevil_garbage_lg.png';
+import winter_greevil_treat_lg from './media/items/winter_greevil_treat_lg.png';
+import winter_ham_lg from './media/items/winter_ham_lg.png';
+import winter_kringle_lg from './media/items/winter_kringle_lg.png';
+import winter_mushroom_lg from './media/items/winter_mushroom_lg.png';
+import winter_skates_lg from './media/items/winter_skates_lg.png';
+import winter_stocking_lg from './media/items/winter_stocking_lg.png';
+import wraith_band_lg from './media/items/wraith_band_lg.png';
+import yasha_and_kaya_lg from './media/items/yasha_and_kaya_lg.png';
+import yasha_lg from './media/items/yasha_lg.png';
 
 export default {
   // Heroes
@@ -1448,4 +1686,242 @@ export default {
   zuus_static_field_lg,
   zuus_thundergods_wrath_lg,
   talent,
+  // Items
+  abyssal_blade_lg,
+  aegis_lg,
+  aeon_disk_lg,
+  aether_lens_lg,
+  ancient_janggo_lg,
+  arcane_boots_lg,
+  armlet_lg,
+  assault_lg,
+  basher_lg,
+  belt_of_strength_lg,
+  bfury_lg,
+  black_king_bar_lg,
+  blade_mail_lg,
+  blade_of_alacrity_lg,
+  blades_of_attack_lg,
+  blight_stone_lg,
+  blink_lg,
+  bloodstone_lg,
+  bloodthorn_lg,
+  boots_lg,
+  boots_of_elves_lg,
+  bottle_lg,
+  bracer_lg,
+  branches_lg,
+  broadsword_lg,
+  buckler_lg,
+  butterfly_lg,
+  chainmail_lg,
+  cheese_lg,
+  circlet_lg,
+  clarity_lg,
+  claymore_lg,
+  cloak_lg,
+  combo_breaker_lg,
+  courier_lg,
+  crimson_guard_lg,
+  crown_lg,
+  cyclone_lg,
+  dagon_2_lg,
+  dagon_3_lg,
+  dagon_4_lg,
+  dagon_5_lg,
+  dagon_lg,
+  demon_edge_lg,
+  desolator_lg,
+  diffusal_blade_2_lg,
+  diffusal_blade_lg,
+  dragon_lance_lg,
+  dust_lg,
+  eagle_lg,
+  echo_sabre_lg,
+  enchanted_mango_lg,
+  energy_booster_lg,
+  ethereal_blade_lg,
+  faerie_fire_lg,
+  flask_lg,
+  flying_courier_lg,
+  force_staff_lg,
+  gauntlets_lg,
+  gem_lg,
+  ghost_lg,
+  glimmer_cape_lg,
+  gloves_lg,
+  greater_crit_lg,
+  greevil_whistle_lg,
+  greevil_whistle_toggle_lg,
+  guardian_greaves_lg,
+  halloween_candy_corn_lg,
+  halloween_rapier_lg,
+  hand_of_midas_lg,
+  headdress_lg,
+  heart_lg,
+  heavens_halberd_lg,
+  helm_of_iron_will_lg,
+  helm_of_the_dominator_lg,
+  holy_locket_lg,
+  hood_of_defiance_lg,
+  hurricane_pike_lg,
+  hyperstone_lg,
+  infused_raindrop_lg,
+  invis_sword_lg,
+  iron_talon_lg,
+  javelin_lg,
+  kaya_and_sange_lg,
+  kaya_lg,
+  lesser_crit_lg,
+  lifesteal_lg,
+  lotus_orb_lg,
+  maelstrom_lg,
+  magic_stick_lg,
+  magic_wand_lg,
+  manta_lg,
+  mantle_lg,
+  mask_of_madness_lg,
+  medallion_of_courage_lg,
+  mekansm_lg,
+  meteor_hammer_lg,
+  mithril_hammer_lg,
+  mjollnir_lg,
+  monkey_king_bar_lg,
+  moon_shard_lg,
+  mystery_arrow_lg,
+  mystery_hook_lg,
+  mystery_missile_lg,
+  mystery_toss_lg,
+  mystery_vacuum_lg,
+  mystic_staff_lg,
+  necronomicon_2_lg,
+  necronomicon_3_lg,
+  necronomicon_lg,
+  nullifier_lg,
+  null_talisman_lg,
+  oblivion_staff_lg,
+  octarine_core_lg,
+  ogre_axe_lg,
+  orb_of_venom_lg,
+  orchid_lg,
+  pers_lg,
+  phase_boots_lg,
+  pipe_lg,
+  platemail_lg,
+  point_booster_lg,
+  poor_mans_shield_lg,
+  power_treads_lg,
+  present_lg,
+  quarterstaff_lg,
+  quelling_blade_lg,
+  radiance_lg,
+  rapier_lg,
+  reaver_lg,
+  recipe_abyssal_blade_lg,
+  recipe_ancient_janggo_lg,
+  recipe_armlet_lg,
+  recipe_assault_lg,
+  recipe_basher_lg,
+  recipe_bfury_lg,
+  recipe_black_king_bar_lg,
+  recipe_bloodstone_lg,
+  recipe_bracer_lg,
+  recipe_buckler_lg,
+  recipe_cyclone_lg,
+  recipe_dagon_lg,
+  recipe_diffusal_blade_lg,
+  recipe_force_staff_lg,
+  recipe_greater_crit_lg,
+  recipe_hand_of_midas_lg,
+  recipe_headdress_lg,
+  recipe_heart_lg,
+  recipe_lesser_crit_lg,
+  recipe_lg,
+  recipe_maelstrom_lg,
+  recipe_magic_wand_lg,
+  recipe_manta_lg,
+  recipe_mekansm_lg,
+  recipe_mjollnir_lg,
+  recipe_necronomicon_lg,
+  recipe_null_talisman_lg,
+  recipe_orchid_lg,
+  recipe_pipe_lg,
+  recipe_radiance_lg,
+  recipe_refresher_lg,
+  recipe_rod_of_atos_lg,
+  recipe_sange_lg,
+  recipe_shivas_guard_lg,
+  recipe_soul_ring_lg,
+  recipe_sphere_lg,
+  recipe_travel_boots_lg,
+  recipe_urn_of_shadows_lg,
+  recipe_veil_of_discord_lg,
+  recipe_vladmir_lg,
+  recipe_wraith_band_lg,
+  recipe_yasha_lg,
+  refresher_lg,
+  refresher_shard_lg,
+  refresher_shard,
+  relic_lg,
+  ring_of_aquila_lg,
+  ring_of_basilius_lg,
+  ring_of_health_lg,
+  ring_of_protection_lg,
+  ring_of_regen_lg,
+  ring_of_tarrasque_lg,
+  robe_lg,
+  rod_of_atos_lg,
+  sange_and_yasha_lg,
+  sange_lg,
+  satanic_lg,
+  shadow_amulet_lg,
+  sheepstick_lg,
+  shivas_guard_lg,
+  silver_edge_lg,
+  skadi_lg,
+  slippers_lg,
+  smoke_of_deceit_lg,
+  sobi_mask_lg,
+  solar_crest_lg,
+  soul_booster_lg,
+  soul_ring_lg,
+  sphere_lg,
+  spirit_vessel_lg,
+  staff_of_wizardry_lg,
+  stout_shield_lg,
+  talisman_of_evasion_lg,
+  tango_lg,
+  tango_single_lg,
+  tome_of_knowledge_lg,
+  tpscroll_lg,
+  tranquil_boots_lg,
+  travel_boots_2_lg,
+  travel_boots_lg,
+  trident_lg,
+  ultimate_orb_lg,
+  ultimate_scepter_lg,
+  urn_of_shadows_lg,
+  vanguard_lg,
+  veil_of_discord_lg,
+  vitality_booster_lg,
+  vladmir_lg,
+  void_stone_lg,
+  ward_dispenser_lg,
+  ward_observer_lg,
+  ward_sentry_lg,
+  wind_lace_lg,
+  winter_cake_lg,
+  winter_coco_lg,
+  winter_cookie_lg,
+  winter_greevil_chewy_lg,
+  winter_greevil_garbage_lg,
+  winter_greevil_treat_lg,
+  winter_ham_lg,
+  winter_kringle_lg,
+  winter_mushroom_lg,
+  winter_skates_lg,
+  winter_stocking_lg,
+  wraith_band_lg,
+  yasha_and_kaya_lg,
+  yasha_lg,
 };
