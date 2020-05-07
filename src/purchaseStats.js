@@ -11,7 +11,7 @@ export default class PurchaseStats extends React.Component {
 
   static outputItemRow(hero, league, arr) {
     return arr.map(([itemID, count]) => {
-      const percent = parseInt((count / hero.pickbans.pick), 10);
+      const percent = parseInt((count / hero.pickbans.pick) * 100, 10);
       return (
         <td>
           <img
@@ -60,9 +60,10 @@ export default class PurchaseStats extends React.Component {
           ただ、そのまま入れるとノイズ多すぎて崩壊するので、下記の条件を前提としています。手動調整はもうしない。めんどくさい。
           <ul>
             <li>・消耗品は除く(opendota db上のconsumable)</li>
-            <li>・190円以下の合成ではないアイテムは除く</li>
+            <li>・620円以下の合成ではないアイテムは除く(blinkだしたい)</li>
             <li>・0秒から前の購入品は除く</li>
           </ul>
+          結局これでもノイズはやっぱりすごいので、ほんとに参考といった感じで。なんとなく左の列の順序が多いかな？くらいの。
         </p>
         {outputRow}
       </div>
