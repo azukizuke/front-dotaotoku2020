@@ -1,18 +1,21 @@
 import React from 'react';
 // eslint-disable-next-line
 import ReactDOM from 'react-dom';
-import './index.css';
-import './sidenav.css';
-import './hero.css';
-import './talentStats.css';
-import './lastItemStats.css';
-import './startItemStats.css';
 import RankingTable from './ranking';
 import SideNav from './sidenav';
 import CollapsibleMenu from './collapsiblemenu';
 import * as serviceWorker from './serviceWorker';
 import Hero from './hero';
 import LeagueStats from './leagueStats';
+// css
+import './index.css';
+import './sidenav.css';
+import './hero.css';
+import './talentStats.css';
+import './lastItemStats.css';
+import './startItemStats.css';
+import './neutralItemStats.css';
+import './purchaseStats.css';
 
 class LeagueRoot extends React.Component {
   static makeStartPage() {

@@ -8,6 +8,7 @@ import SkillStats from './skillStats';
 import LastItemStats from './lastItemStats';
 import StartItemStats from './startItemStats';
 import NeutralItemStats from './neutralItemStats';
+import PurchaseStats from './purchaseStats';
 
 export default class Hero extends React.Component {
   static outHeroStats(hero) {
@@ -112,6 +113,11 @@ export default class Hero extends React.Component {
         />
         <h3>neutral item stats</h3>
         <NeutralItemStats
+          league={league}
+          hero={hero}
+        />
+        <h3>お買い物順 stats</h3>
+        <PurchaseStats
           league={league}
           hero={hero}
         />

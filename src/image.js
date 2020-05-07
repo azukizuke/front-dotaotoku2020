@@ -960,6 +960,59 @@ import winter_stocking_lg from './media/items/winter_stocking_lg.png';
 import wraith_band_lg from './media/items/wraith_band_lg.png';
 import yasha_and_kaya_lg from './media/items/yasha_and_kaya_lg.png';
 import yasha_lg from './media/items/yasha_lg.png';
+import apex_lg from './media/items/apex_lg.png';
+import arcane_ring_lg from './media/items/arcane_ring_lg.png';
+import ballista_lg from './media/items/ballista_lg.png';
+import demonicon_lg from './media/items/demonicon_lg.png';
+import broom_handle_lg from './media/items/broom_handle_lg.png';
+import clumsy_net_lg from './media/items/clumsy_net_lg.png';
+import craggy_coat_lg from './media/items/craggy_coat_lg.png';
+import dragon_scale_lg from './media/items/dragon_scale_lg.png';
+import enchanted_quiver_lg from './media/items/enchanted_quiver_lg.png';
+import essence_ring_lg from './media/items/essence_ring_lg.png';
+import ex_machina_lg from './media/items/ex_machina_lg.png';
+import faded_broach_lg from './media/items/faded_broach_lg.png';
+import fallen_sky_lg from './media/items/fallen_sky_lg.png';
+import flicker_lg from './media/items/flicker_lg.png';
+import force_boots_lg from './media/items/force_boots_lg.png';
+import greater_faerie_fire_lg from './media/items/greater_faerie_fire_lg.png';
+import grove_bow_lg from './media/items/grove_bow_lg.png';
+import havoc_hammer_lg from './media/items/havoc_hammer_lg.png';
+import illusioniss_cape_lg from './media/items/illusioniss_cape_lg.png';
+import imp_claw_lg from './media/items/imp_claw_lg.png';
+import ironwood_tree_lg from './media/items/ironwood_tree_lg.png';
+import keen_optic_lg from './media/items/keen_optic_lg.png';
+import panic_button_lg from './media/items/panic_button_lg.png';
+import mango_tree_lg from './media/items/mango_tree_lg.png';
+import mind_breaker_lg from './media/items/mind_breaker_lg.png';
+import minotaur_horn_lg from './media/items/minotaur_horn_lg.png';
+import mirror_shield_lg from './media/items/mirror_shield_lg.png';
+import nether_shawl_lg from './media/items/nether_shawl_lg.png';
+import ninja_gear_lg from './media/items/ninja_gear_lg.png';
+import ocean_heart_lg from './media/items/ocean_heart_lg.png';
+import orb_of_destruction_lg from './media/items/orb_of_destruction_lg.png';
+import paladin_sword_lg from './media/items/paladin_sword_lg.png';
+import philosophers_stone_lg from './media/items/philosophers_stone_lg.png';
+import pirate_hat_lg from './media/items/pirate_hat_lg.png';
+import princes_knife_lg from './media/items/princes_knife_lg.png';
+import pupils_gift_lg from './media/items/pupils_gift_lg.png';
+import quickening_charm_lg from './media/items/quickening_charm_lg.png';
+import repair_kit_lg from './media/items/repair_kit_lg.png';
+import ring_of_aquila_active_lg from './media/items/ring_of_aquila_active_lg.png';
+import royal_jelly_1_lg from './media/items/royal_jelly_1_lg.png';
+import seer_stone_lg from './media/items/seer_stone_lg.png';
+import spell_prism_lg from './media/items/spell_prism_lg.png';
+import spider_legs_lg from './media/items/spider_legs_lg.png';
+import stygian_desolator_lg from './media/items/stygian_desolator_lg.png';
+import spy_gadget_lg from './media/items/spy_gadget_lg.png';
+import the_leveller_lg from './media/items/the_leveller_lg.png';
+import timeless_relic_lg from './media/items/timeless_relic_lg.png';
+import titan_sliver_lg from './media/items/titan_sliver_lg.png';
+import trusty_shovel_lg from './media/items/trusty_shovel_lg.png';
+import vambrace_lg from './media/items/vambrace_lg.png';
+import vampire_fangs_lg from './media/items/vampire_fangs_lg.png';
+import witless_shako_lg from './media/items/witless_shako_lg.png';
+import woodland_striders_lg from './media/items/woodland_striders_lg.png';
 
 export default {
   // Heroes
@@ -1924,4 +1977,60 @@ export default {
   wraith_band_lg,
   yasha_and_kaya_lg,
   yasha_lg,
+  apex_lg,
+  arcane_ring_lg,
+  ballista_lg,
+  demonicon_lg,
+  broom_handle_lg,
+  clumsy_net_lg,
+  craggy_coat_lg,
+  dragon_scale_lg,
+  enchanted_quiver_lg,
+  essence_ring_lg,
+  ex_machina_lg,
+  faded_broach_lg,
+  fallen_sky_lg,
+  flicker_lg,
+  force_boots_lg,
+  greater_faerie_fire_lg,
+  grove_bow_lg,
+  havoc_hammer_lg,
+  illusioniss_cape_lg,
+  imp_claw_lg,
+  iron_talon_lg,
+  ironwood_tree_lg,
+  keen_optic_lg,
+  panic_button_lg,
+  mango_tree_lg,
+  mind_breaker_lg,
+  minotaur_horn_lg,
+  mirror_shield_lg,
+  nether_shawl_lg,
+  ninja_gear_lg,
+  ocean_heart_lg,
+  orb_of_destruction_lg,
+  paladin_sword_lg,
+  philosophers_stone_lg,
+  pirate_hat_lg,
+  poor_mans_shield_lg,
+  princes_knife_lg,
+  pupils_gift_lg,
+  quickening_charm_lg,
+  repair_kit_lg,
+  ring_of_aquila_active_lg,
+  royal_jelly_1_lg,
+  seer_stone_lg,
+  spell_prism_lg,
+  spider_legs_lg,
+  stygian_desolator_lg,
+  spy_gadget_lg,
+  the_leveller_lg,
+  timeless_relic_lg,
+  titan_sliver_lg,
+  trident_lg,
+  trusty_shovel_lg,
+  vambrace_lg,
+  vampire_fangs_lg,
+  witless_shako_lg,
+  woodland_striders_lg,
 };

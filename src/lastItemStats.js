@@ -44,8 +44,8 @@ export default class LastItemStats extends React.Component {
         <table>
           <thead>
             <tr>
-              <th>item</th>
               <th>stats</th>
+              <th>item</th>
             </tr>
           </thead>
           <tbody>

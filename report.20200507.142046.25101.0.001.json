@@ -1,0 +1,500 @@
+
+{
+  "header": {
+    "reportVersion": 2,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20200507.142046.25101.0.001.json",
+    "dumpEventTime": "2020-05-07T14:20:46Z",
+    "dumpEventTimeStamp": "1588828846037",
+    "processId": 25101,
+    "threadId": null,
+    "cwd": "/home/azukizuke/test-app",
+    "commandLine": [
+      "node",
+      "/home/azukizuke/test-app/node_modules/react-scripts/scripts/start.js"
+    ],
+    "nodejsVersion": "v12.16.2",
+    "glibcVersionRuntime": "2.27",
+    "glibcVersionCompiler": "2.17",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "linux",
+    "componentVersions": {
+      "node": "12.16.2",
+      "v8": "7.8.279.23-node.34",
+      "uv": "1.34.2",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.40.0",
+      "napi": "5",
+      "llhttp": "2.0.4",
+      "http_parser": "2.9.3",
+      "openssl": "1.1.1e",
+      "cldr": "36.0",
+      "icu": "65.1",
+      "tz": "2019c",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.16.2/node-v12.16.2-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.16.2/node-v12.16.2.tar.gz"
+    },
+    "osName": "Linux",
+    "osRelease": "4.15.0-99-generic",
+    "osVersion": "#100-Ubuntu SMP Wed Apr 22 20:32:56 UTC 2020",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Xeon(R) CPU E5-2650 v3 @ 2.30GHz",
+        "speed": 2294,
+        "user": 48393100,
+        "nice": 209400,
+        "sys": 4330500,
+        "idle": 4162063000,
+        "irq": 0
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "eth0",
+        "internal": false,
+        "mac": "02:01:96:5f:d4:e3",
+        "address": "150.95.212.227",
+        "netmask": "255.255.254.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "lo",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "eth0",
+        "internal": false,
+        "mac": "02:01:96:5f:d4:e3",
+        "address": "fe80::1:96ff:fe5f:d4e3",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 2
+      }
+    ],
+    "host": "150-95-212-227"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x0000000000b40285",
+      "symbol": "report::TriggerNodeReport(v8::Isolate*, node::Environment*, char const*, char const*, std::string const&, v8::Local<v8::String>) [node]"
+    },
+    {
+      "pc": "0x0000000000a033ef",
+      "symbol": "node::OnFatalError(char const*, char const*) [node]"
+    },
+    {
+      "pc": "0x0000000000b76ffe",
+      "symbol": "v8::Utils::ReportOOMFailure(v8::internal::Isolate*, char const*, bool) [node]"
+    },
+    {
+      "pc": "0x0000000000b77379",
+      "symbol": "v8::internal::V8::FatalProcessOutOfMemory(v8::internal::Isolate*, char const*, bool) [node]"
+    },
+    {
+      "pc": "0x0000000000d23ad5",
+      "symbol": " [node]"
+    },
+    {
+      "pc": "0x0000000000d343e8",
+      "symbol": "v8::internal::Heap::AllocateRawWithRetryOrFail(int, v8::internal::AllocationType, v8::internal::AllocationOrigin, v8::internal::AllocationAlignment) [node]"
+    },
+    {
+      "pc": "0x0000000000d0288d",
+      "symbol": "v8::internal::Factory::NewRawTwoByteString(int, v8::internal::AllocationType) [node]"
+    },
+    {
+      "pc": "0x0000000000f420b5",
+      "symbol": "v8::internal::String::SlowFlatten(v8::internal::Isolate*, v8::internal::Handle<v8::internal::ConsString>, v8::internal::AllocationType) [node]"
+    },
+    {
+      "pc": "0x0000000000b7625b",
+      "symbol": "v8::internal::String::Flatten(v8::internal::Isolate*, v8::internal::Handle<v8::internal::String>, v8::internal::AllocationType) [node]"
+    },
+    {
+      "pc": "0x0000000000f44224",
+      "symbol": "v8::internal::String::IndexOf(v8::internal::Isolate*, v8::internal::Handle<v8::internal::String>, v8::internal::Handle<v8::internal::String>, int) [node]"
+    },
+    {
+      "pc": "0x000000000107c27b",
+      "symbol": "v8::internal::Runtime_StringIndexOfUnchecked(int, unsigned long*, v8::internal::Isolate*) [node]"
+    },
+    {
+      "pc": "0x00000000013c03d9",
+      "symbol": " [node]"
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 255483904,
+    "totalCommittedMemory": 253850520,
+    "usedMemory": 250268064,
+    "availableMemory": 21008432,
+    "memoryLimit": 271581184,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 33088,
+        "capacity": 32808,
+        "used": 32808,
+        "available": 0
+      },
+      "new_space": {
+        "memorySize": 1048576,
+        "committedMemory": 1120,
+        "capacity": 1047456,
+        "used": 0,
+        "available": 1047456
+      },
+      "old_space": {
+        "memorySize": 152444928,
+        "committedMemory": 152144408,
+        "capacity": 151838728,
+        "used": 149114296,
+        "available": 2724432
+      },
+      "code_space": {
+        "memorySize": 1478656,
+        "committedMemory": 1422624,
+        "capacity": 1404928,
+        "used": 1313120,
+        "available": 91808
+      },
+      "map_space": {
+        "memorySize": 2887680,
+        "committedMemory": 2887360,
+        "capacity": 2606080,
+        "used": 2606080,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 96739328,
+        "committedMemory": 96739328,
+        "capacity": 96657216,
+        "used": 96657216,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 622592,
+        "committedMemory": 622592,
+        "capacity": 544544,
+        "used": 544544,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1047456,
+        "used": 0,
+        "available": 1047456
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 44.7689,
+    "kernelCpuSeconds": 2.10574,
+    "cpuConsumptionPercent": 11.3773,
+    "maxRss": 372019200,
+    "pageFaults": {
+      "IORequired": 1202,
+      "IONotRequired": 696304
+    },
+    "fsActivity": {
+      "reads": 370080,
+      "writes": 144
+    }
+  },
+  "uvthreadResourceUsage": {
+    "userCpuSeconds": 21.9102,
+    "kernelCpuSeconds": 1.67126,
+    "cpuConsumptionPercent": 5.72365,
+    "fsActivity": {
+      "reads": 206624,
+      "writes": 0
+    }
+  },
+  "libuv": [
+  ],
+  "workers": [
+  ],
+  "environmentVariables": {
+    "LESSOPEN": "| /usr/bin/lesspipe %s",
+    "npm_config_cache_lock_stale": "60000",
+    "npm_config_ham_it_up": "",
+    "npm_config_legacy_bundling": "",
+    "npm_config_sign_git_tag": "",
+    "MAIL": "/var/mail/azukizuke",
+    "USER": "azukizuke",
+    "SSH_CLIENT": "180.15.87.170 49312 22222",
+    "npm_package_devDependencies_eslint_plugin_standard": "^4.0.1",
+    "npm_config_user_agent": "npm/6.14.4 node/v12.16.2 linux x64",
+    "npm_config_always_auth": "",
+    "npm_config_bin_links": "true",
+    "npm_config_key": "",
+    "npm_package_devDependencies_eslint_plugin_node": "^11.1.0",
+    "npm_config_allow_same_version": "",
+    "npm_config_description": "true",
+    "npm_config_fetch_retries": "2",
+    "npm_config_heading": "npm",
+    "npm_config_if_present": "",
+    "npm_config_init_version": "1.0.0",
+    "npm_config_user": "",
+    "npm_node_execpath": "/usr/local/bin/node",
+    "SHLVL": "1",
+    "npm_config_prefer_online": "",
+    "npm_config_noproxy": "",
+    "HOME": "/home/azukizuke",
+    "OLDPWD": "/home/azukizuke",
+    "npm_package_browserslist_production_0": ">0.2%",
+    "npm_config_force": "",
+    "SSH_TTY": "/dev/pts/1",
+    "npm_package_browserslist_production_1": "not dead",
+    "npm_config_only": "",
+    "npm_config_read_only": "",
+    "npm_package_browserslist_production_2": "not op_mini all",
+    "npm_config_cache_min": "10",
+    "npm_config_init_license": "ISC",
+    "npm_config_editor": "vi",
+    "npm_config_rollback": "true",
+    "npm_config_tag_version_prefix": "v",
+    "npm_package_devDependencies_stylelint_config_standard": "^20.0.0",
+    "npm_config_cache_max": "Infinity",
+    "npm_config_timing": "",
+    "npm_config_userconfig": "/home/azukizuke/.npmrc",
+    "npm_package_devDependencies_eslint_plugin_react_hooks": "^2.5.1",
+    "npm_config_engine_strict": "",
+    "npm_config_init_author_name": "",
+    "npm_config_init_author_url": "",
+    "npm_config_preid": "",
+    "npm_config_tmp": "/tmp",
+    "npm_package_dependencies_react_scripts": "3.4.1",
+    "npm_package_description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+    "npm_config_depth": "Infinity",
+    "npm_config_package_lock_only": "",
+    "npm_config_save_dev": "",
+    "npm_config_usage": "",
+    "npm_package_dependencies__testing_library_react": "^9.5.0",
+    "npm_package_readmeFilename": "README.md",
+    "npm_config_metrics_registry": "https://registry.npmjs.org/",
+    "npm_config_cafile": "",
+    "npm_config_otp": "",
+    "npm_config_package_lock": "true",
+    "npm_config_progress": "true",
+    "npm_config_https_proxy": "",
+    "npm_config_save_prod": "",
+    "npm_config_audit": "true",
+    "npm_config_cidr": "",
+    "npm_config_onload_script": "",
+    "npm_config_sso_type": "oauth",
+    "LOGNAME": "azukizuke",
+    "npm_package_devDependencies_eslint_plugin_import": "^2.20.2",
+    "npm_config_rebuild_bundle": "true",
+    "npm_config_save_bundle": "",
+    "npm_config_shell": "/bin/bash",
+    "_": "/usr/local/bin/npm",
+    "npm_package_private": "true",
+    "npm_package_devDependencies_eslint_config_standard": "^14.1.1",
+    "npm_config_dry_run": "",
+    "npm_config_format_package_lock": "true",
+    "npm_config_prefix": "/usr/local",
+    "npm_config_scope": "",
+    "npm_config_browser": "",
+    "npm_config_cache_lock_wait": "10000",
+    "npm_config_ignore_prepublish": "",
+    "npm_config_registry": "https://registry.npmjs.org/",
+    "npm_config_save_optional": "",
+    "npm_config_searchopts": "",
+    "npm_config_versions": "",
+    "XDG_SESSION_ID": "154",
+    "TERM": "xterm",
+    "npm_package_devDependencies_stylelint": "^13.3.3",
+    "npm_config_cache": "/home/azukizuke/.npm",
+    "npm_config_proxy": "",
+    "npm_config_send_metrics": "",
+    "npm_package_scripts_start": "react-scripts start",
+    "npm_config_global_style": "",
+    "npm_config_ignore_scripts": "",
+    "npm_config_version": "",
+    "npm_package_browserslist_development_0": "last 1 chrome version",
+    "npm_config_local_address": "",
+    "npm_config_viewer": "man",
+    "npm_config_node_gyp": "/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js",
+    "PATH": "/usr/local/lib/node_modules/npm/node_modules/npm-lifecycle/node-gyp-bin:/home/azukizuke/test-app/node_modules/.bin:/home/azukizuke/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin",
+    "npm_package_name": "front-dotasexsex2020",
+    "npm_package_browserslist_development_1": "last 1 firefox version",
+    "npm_config_audit_level": "low",
+    "npm_config_prefer_offline": "",
+    "NODE": "/usr/local/bin/node",
+    "XDG_RUNTIME_DIR": "/run/user/1000",
+    "npm_package_browserslist_development_2": "last 1 safari version",
+    "npm_package_devDependencies_eslint_plugin_jsx_a11y": "^6.2.3",
+    "npm_config_color": "true",
+    "npm_config_sign_git_commit": "",
+    "npm_package_scripts_eject": "react-scripts eject",
+    "npm_package_devDependencies_eslint_config_airbnb": "^18.1.0",
+    "npm_config_fetch_retry_mintimeout": "10000",
+    "npm_config_maxsockets": "50",
+    "npm_config_offline": "",
+    "npm_config_sso_poll_frequency": "500",
+    "LANG": "en_US.UTF-8",
+    "npm_package_dependencies_react_dom": "^16.13.1",
+    "npm_package_devDependencies_eslint": "^6.8.0",
+    "npm_config_umask": "0002",
+    "LS_COLORS": "rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:",
+    "npm_package_main": "index.js",
+    "npm_package_gitHead": "6fa8df0bd2629b545a54dfefd0f0d28f48420219",
+    "npm_config_fund": "true",
+    "npm_config_fetch_retry_maxtimeout": "60000",
+    "npm_config_loglevel": "notice",
+    "npm_config_logs_max": "10",
+    "npm_config_message": "%s",
+    "npm_lifecycle_script": "react-scripts start",
+    "npm_package_scripts_test": "react-scripts test",
+    "npm_config_ca": "",
+    "npm_config_cert": "",
+    "npm_config_global": "",
+    "npm_config_link": "",
+    "SHELL": "/bin/bash",
+    "npm_package_version": "0.1.0",
+    "npm_package_dependencies__testing_library_jest_dom": "^4.2.4",
+    "npm_config_access": "",
+    "npm_config_also": "",
+    "npm_config_save": "true",
+    "npm_config_unicode": "true",
+    "npm_lifecycle_event": "start",
+    "npm_package_dependencies__testing_library_user_event": "^7.2.1",
+    "npm_package_scripts_build": "react-scripts --max_old_space_size=4096 build",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"start\"],\"original\":[\"start\"]}",
+    "npm_config_before": "",
+    "npm_config_long": "",
+    "npm_config_production": "",
+    "npm_config_searchlimit": "20",
+    "npm_config_unsafe_perm": "true",
+    "npm_config_update_notifier": "true",
+    "LESSCLOSE": "/usr/bin/lesspipe %s %s",
+    "npm_config_auth_type": "legacy",
+    "npm_config_node_version": "12.16.2",
+    "npm_config_tag": "latest",
+    "npm_config_git_tag_version": "true",
+    "npm_config_commit_hooks": "true",
+    "npm_config_script_shell": "",
+    "npm_config_shrinkwrap": "true",
+    "npm_package_devDependencies_eslint_plugin_react": "^7.19.0",
+    "npm_package_license": "ISC",
+    "npm_config_fetch_retry_factor": "10",
+    "npm_config_save_exact": "",
+    "npm_config_strict_ssl": "true",
+    "npm_config_dev": "",
+    "npm_config_globalconfig": "/usr/local/etc/npmrc",
+    "npm_config_init_module": "/home/azukizuke/.npm-init.js",
+    "npm_config_parseable": "",
+    "PWD": "/home/azukizuke/test-app",
+    "npm_config_globalignorefile": "/usr/local/etc/npmignore",
+    "npm_execpath": "/usr/local/lib/node_modules/npm/bin/npm-cli.js",
+    "SSH_CONNECTION": "180.15.87.170 49312 150.95.212.227 22222",
+    "XDG_DATA_DIRS": "/usr/local/share:/usr/share:/var/lib/snapd/desktop",
+    "npm_package_author_name": "azukizuke",
+    "npm_config_cache_lock_retries": "10",
+    "npm_config_searchstaleness": "900",
+    "npm_package_dependencies_prop_types": "^15.7.2",
+    "npm_config_node_options": "",
+    "npm_config_save_prefix": "^",
+    "npm_config_scripts_prepend_node_path": "warn-only",
+    "npm_config_group": "1004",
+    "npm_config_init_author_email": "",
+    "npm_config_searchexclude": "",
+    "npm_package_devDependencies_eslint_plugin_promise": "^4.2.1",
+    "npm_config_git": "git",
+    "npm_config_optional": "true",
+    "npm_package_dependencies_react": "^16.13.1",
+    "npm_package_eslintConfig_extends": "react-app",
+    "npm_package_devDependencies_eslint_config_google": "^0.14.0",
+    "npm_config_json": "",
+    "INIT_CWD": "/home/azukizuke/test-app",
+    "BABEL_ENV": "development",
+    "NODE_ENV": "development",
+    "NODE_PATH": "",
+    "WEBPACK_DEV_SERVER": "true"
+  },
+  "userLimits": {
+    "core_file_size_blocks": {
+      "soft": 0,
+      "hard": "unlimited"
+    },
+    "data_seg_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "file_size_blocks": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_locked_memory_bytes": {
+      "soft": 16777216,
+      "hard": 16777216
+    },
+    "max_memory_size_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "open_files": {
+      "soft": 1048576,
+      "hard": 1048576
+    },
+    "stack_size_bytes": {
+      "soft": 8388608,
+      "hard": "unlimited"
+    },
+    "cpu_time_seconds": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    },
+    "max_user_processes": {
+      "soft": 1678,
+      "hard": 1678
+    },
+    "virtual_memory_kbytes": {
+      "soft": "unlimited",
+      "hard": "unlimited"
+    }
+  },
+  "sharedObjects": [
+    "linux-vdso.so.1",
+    "/lib/x86_64-linux-gnu/libdl.so.2",
+    "/usr/lib/x86_64-linux-gnu/libstdc++.so.6",
+    "/lib/x86_64-linux-gnu/libm.so.6",
+    "/lib/x86_64-linux-gnu/libgcc_s.so.1",
+    "/lib/x86_64-linux-gnu/libpthread.so.0",
+    "/lib/x86_64-linux-gnu/libc.so.6",
+    "/lib64/ld-linux-x86-64.so.2",
+    "/lib/x86_64-linux-gnu/libnss_files.so.2"
+  ]
+}
