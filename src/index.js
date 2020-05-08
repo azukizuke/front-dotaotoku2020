@@ -7,6 +7,8 @@ import CollapsibleMenu from './collapsiblemenu';
 import * as serviceWorker from './serviceWorker';
 import Hero from './hero';
 import LeagueStats from './leagueStats';
+import CompareLeague from './compareLeague'
+import AllHeroLayout from './allHeroLayout'
 // css
 import './index.css';
 import './sidenav.css';
@@ -16,6 +18,8 @@ import './lastItemStats.css';
 import './startItemStats.css';
 import './neutralItemStats.css';
 import './purchaseStats.css';
+import './compareLeague.css'
+import './allHeroLayout.css'
 
 class LeagueRoot extends React.Component {
   static makeStartPage() {
@@ -100,9 +104,22 @@ class LeagueRoot extends React.Component {
       <div className="main">
         <LeagueStats league={allleaguejson[leagueid]} />
         <h3>ヒーローアイコンをクリックすると色々見れるようにしました 随時追加していきます</h3>
-        <CollapsibleMenu title="PickBan ランキング開閉" buttonClass="buttonMainBorder">
+        <CollapsibleMenu title="PickBan ランキング" buttonClass="buttonMainBorder">
           <RankingTable
             leaguejson={allleaguejson[leagueid]}
+            onClickHero={this.handleClickHero}
+          />
+        </CollapsibleMenu>
+        <CollapsibleMenu title="リーグ比較" buttonClass="buttonMainBorder">
+          <CompareLeague
+            league={allleaguejson[leagueid]}
+            allLeagueDict = {allleaguejson}
+            onClickHero={this.handleClickHero}
+          />
+        </CollapsibleMenu>
+        <CollapsibleMenu title="全ヒーローリスト" buttonClass="buttonMainBorder">
+          <AllHeroLayout
+            league={allleaguejson[leagueid]}
             onClickHero={this.handleClickHero}
           />
         </CollapsibleMenu>

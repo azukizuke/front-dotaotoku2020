@@ -9,6 +9,7 @@ import LastItemStats from './lastItemStats';
 import StartItemStats from './startItemStats';
 import NeutralItemStats from './neutralItemStats';
 import PurchaseStats from './purchaseStats';
+import CollapsibleMenu from './collapsiblemenu';
 
 export default class Hero extends React.Component {
   static outHeroStats(hero) {
@@ -90,37 +91,43 @@ export default class Hero extends React.Component {
           value={heroid}
         />
         {Hero.outHeroStats(hero)}
-        <h3>skill stats</h3>
-        <p>lv19くらいからちょっと表示が変ですがどうせタレントしかないし今はこうします。そのうち直します。</p>
-        <SkillStats
-          league={league}
-          hero={hero}
-        />
-        <h3>talent stats</h3>
-        <TalentStats
-          league={league}
-          heroid={heroid}
-        />
-        <h3>last item stats</h3>
-        <LastItemStats
-          league={league}
-          hero={hero}
-        />
-        <h3>start item stats</h3>
-        <StartItemStats
-          league={league}
-          hero={hero}
-        />
-        <h3>neutral item stats</h3>
-        <NeutralItemStats
-          league={league}
-          hero={hero}
-        />
-        <h3>お買い物順 stats</h3>
-        <PurchaseStats
-          league={league}
-          hero={hero}
-        />
+        <CollapsibleMenu title="スキル取得の分布" buttonClass="buttonMainBorder">
+          <p>lv19くらいからちょっと表示が変ですがどうせタレントしかないし今はこうします。そのうち直します。</p>
+          <SkillStats
+            league={league}
+            hero={hero}
+          />
+        </ CollapsibleMenu>
+        <CollapsibleMenu title="タレント取得の分布" buttonClass="buttonMainBorder">
+          <TalentStats
+            league={league}
+            heroid={heroid}
+          />
+        </ CollapsibleMenu>
+        <CollapsibleMenu title="試合終了時アイテムの分布" buttonClass="buttonMainBorder">
+          <LastItemStats
+            league={league}
+            hero={hero}
+          />
+        </ CollapsibleMenu>
+        <CollapsibleMenu title="試合開始時アイテムの分布" buttonClass="buttonMainBorder">
+          <StartItemStats
+            league={league}
+            hero={hero}
+          />
+        </ CollapsibleMenu>
+        <CollapsibleMenu title="ニュートラルアイテムの分布" buttonClass="buttonMainBorder">
+          <NeutralItemStats
+            league={league}
+            hero={hero}
+          />
+        </ CollapsibleMenu>
+        <CollapsibleMenu title="買い物順の分布 ※ノイズ大きいので注意※" buttonClass="buttonMainBorder">
+          <PurchaseStats
+            league={league}
+            hero={hero}
+          />
+        </ CollapsibleMenu>
       </div>
     );
   }

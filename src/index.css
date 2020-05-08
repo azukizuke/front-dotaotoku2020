@@ -120,9 +120,10 @@ ul {
   cursor: pointer;
   background-color: #4CAF50; /* Green */
   text-align: left;
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 10px;
   border: 0px solid;
   width: 100%;
   display: block;
+  font-size: 30px;
 }

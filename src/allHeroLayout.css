@@ -1,0 +1,16 @@
+img.allHeroLayoutImage {
+  width: 90px;
+  cursor: pointer;
+}
+
+div.allHeroLayoutParent {
+  display: flex;
+  flex-wrap: wrap;
+  border: 0px solid #666;
+  width: 100%;
+  text-align: center;
+  font-size: 10px;
+}
+
+div.allHeroLayoutChild {
+}
