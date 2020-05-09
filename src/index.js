@@ -13,6 +13,7 @@ import AllHeroLayout from './allHeroLayout'
 import './index.css';
 import './sidenav.css';
 import './hero.css';
+import './ranking.css';
 import './talentStats.css';
 import './lastItemStats.css';
 import './startItemStats.css';
@@ -20,6 +21,7 @@ import './neutralItemStats.css';
 import './purchaseStats.css';
 import './compareLeague.css'
 import './allHeroLayout.css'
+import './leagueStats.css'
 
 class LeagueRoot extends React.Component {
   static makeStartPage() {

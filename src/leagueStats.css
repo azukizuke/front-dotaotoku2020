@@ -1,0 +1,16 @@
+div.leagueStatsBar {
+  display: flex;
+  height: 10px;
+  width: 100%;
+  background-color: rgba(100,100,100,255);
+}
+
+.leagueStatsBarGreen {
+  background-color: rgba(0,255,0,255);
+  height: 10px;
+}
+
+.leagueStatsBarRed {
+  background-color: rgba(255,0,0,255);
+  height: 10px;
+}

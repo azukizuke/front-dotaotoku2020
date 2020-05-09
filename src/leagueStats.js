@@ -38,7 +38,21 @@ export default class LeagueStats extends React.Component {
     const direWinNum = matchNum - radiantWinNum;
     const radiantPercent = parseInt((radiantWinNum / matchNum) * 100, 10);
     const direPercent = parseInt((direWinNum / matchNum) * 100, 10);
-    return `${radiantPercent}% - ${direPercent}%`;
+    return (
+      <div>
+        {`${radiantPercent}% - ${direPercent}%`}
+        <div className="leagueStatsBar">
+          <div
+            className="leagueStatsBarGreen"
+            style={{ flexGrow: radiantPercent }}
+          />
+          <div
+            className="leagueStatsBarRed"
+            style={{ flexGrow: direPercent }}
+          />
+        </div>
+      </div>
+    );
   }
 
   render() {

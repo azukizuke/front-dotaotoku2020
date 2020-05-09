@@ -1,4 +1,5 @@
 import React from 'react';
+// eslint-disable-next-line
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import * as images from './image';
@@ -26,6 +27,17 @@ export default class RankingTable extends React.Component {
   render() {
     return (
       <div>
+        <p>
+          一番左の列は大会を通してpick/ban両方の数が多いヒーローを表示してます
+          <br />
+          各%はpick+ban両方 - pickのみ - banのみのカウントを試合数で割ったものです。
+          緑がpick 赤がban
+        </p>
+        <p>
+          それ以外は、各roleとしてpickされた回数を表示してます。pickのみ。
+          <br />
+          roleは自動で判定しています。
+        </p>
         <div className="pickban_ranking">
           {this.makeRankingRender('all', 'all', 'nofilter', 'rankingOdd')}
           {this.makeRankingRender('pos1', 'autopos1', 'nofilter', 'rankingEven')}
@@ -41,10 +53,12 @@ export default class RankingTable extends React.Component {
 
 RankingTable.defaultProps = {
   leaguejson: false,
+  onClickHero: undefined,
 };
 
 RankingTable.propTypes = {
   leaguejson: PropTypes.objectOf(PropTypes.number),
+  onClickHero: PropTypes.func,
 };
 
 
@@ -75,8 +89,8 @@ class Ranking extends React.Component {
 
   isFilterRole(heroid) {
     const { herojson, mode } = this.props;
-    if(mode === 'nofilter') {
-        return true
+    if (mode === 'nofilter') {
+      return true;
     }
     return (herojson[heroid].hero_role[mode]);
   }
@@ -110,26 +124,26 @@ class Ranking extends React.Component {
     const strAll = `${percentAll}%`;
     const strPick = `${percentPick}%`;
     const strBan = `${percentBan}%`;
-    const strRole = `pick: ${percentRole}%`;
+    const strRole = `${percentRole}%`;
 
-    if(pbkey === "all"){
+    if (pbkey === 'all') {
       return (
         <div>
           <ul>
-            <li>{strAll}-{strPick}-{strBan}</li>
+            <li>{`${strAll}-${strPick}-${strBan}`}</li>
             <li>{Ranking.makePickBanBar(percentAll, percentPick, percentBan)}</li>
           </ul>
         </div>
       );
-    } else {
-      return (
-        <div>
-          <ul>
-            <li>{strRole}</li>
-          </ul>
-        </div>
-      );
     }
+    return (
+      <div>
+        <ul>
+          <li>{strRole}</li>
+          <li>{Ranking.makePickBanBar(percentRole, percentRole, 0)}</li>
+        </ul>
+      </div>
+    );
   }
 
   makeRankingOutput() {
@@ -158,8 +172,14 @@ class Ranking extends React.Component {
   }
 
   render() {
-    const { mode, tableClass, title } = this.props;
+    const { tableClass, title, pbkey } = this.props;
     const rankingRow = this.makeRankingOutput();
+    let outputStat = '';
+    if (pbkey === 'all') {
+      outputStat = 'all - pick - ban';
+    } else {
+      outputStat = 'pick';
+    }
     return (
       <div>
         <table className={tableClass}>
@@ -168,8 +188,8 @@ class Ranking extends React.Component {
               <th className="rankingTableHeader" colSpan="2">{title}</th>
             </tr>
             <tr>
-              <th className="rankingTableHeader">heroid</th>
-              <th className="rankingTableHeader">stat</th>
+              <th className="rankingTableHeader">hero</th>
+              <th className="rankingTableHeader">{outputStat}</th>
             </tr>
           </thead>
           <tbody>
@@ -184,17 +204,23 @@ class Ranking extends React.Component {
 Ranking.defaultProps = {
   mode: 'noprops',
   rank: 99,
-  ranking: false,
-  herojson: false,
+  ranking: {},
+  herojson: {},
   tableClass: '',
+  pbkey: '',
+  title: '',
   matchNum: 0,
+  onClickHero: undefined,
 };
 
 Ranking.propTypes = {
-  ranking: PropTypes.objectOf(PropTypes.number),
-  herojson: PropTypes.objectOf(PropTypes.number),
+  ranking: PropTypes.object,
+  herojson: PropTypes.object,
   matchNum: PropTypes.number,
   mode: PropTypes.string,
+  pbkey: PropTypes.string,
+  title: PropTypes.string,
   rank: PropTypes.number,
   tableClass: PropTypes.string,
+  onClickHero: PropTypes.func,
 };
