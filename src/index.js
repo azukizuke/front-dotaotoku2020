@@ -13,6 +13,7 @@ import AllHeroLayout from './allHeroLayout'
 import './index.css';
 import './sidenav.css';
 import './hero.css';
+import './skillStats.css';
 import './ranking.css';
 import './talentStats.css';
 import './lastItemStats.css';

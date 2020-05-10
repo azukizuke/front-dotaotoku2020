@@ -69,31 +69,31 @@ export default class LeagueStats extends React.Component {
         <h1>
           {league.name}
         </h1>
-        <table className="leagueStats">
+        <table className="leagueStatsTable">
           <tbody>
             <tr>
-              <td className="leagueStats">leagueID</td>
-              <td className="leagueStats">{league.league_id}</td>
+              <td className="leagueStatsTdIndex">leagueID</td>
+              <td className="leagueStatsTdParam">{league.league_id}</td>
             </tr>
             <tr>
-              <td className="leagueStats">試合数</td>
-              <td className="leagueStats">{league.match_num}</td>
+              <td className="leagueStatsTdIndex">試合数</td>
+              <td className="leagueStatsTdParam">{league.match_num}</td>
             </tr>
             <tr>
-              <td className="leagueStats">match_id 計測期間</td>
-              <td className="leagueStats">{outputMatchID}</td>
+              <td className="leagueStatsTdIndex">match_id 計測期間</td>
+              <td className="leagueStatsTdParam">{outputMatchID}</td>
             </tr>
             <tr>
-              <td className="leagueStats">日付 計測期間</td>
-              <td className="leagueStats">{outputDate}</td>
+              <td className="leagueStatsTdIndex">日付 計測期間</td>
+              <td className="leagueStatsTdParam">{outputDate}</td>
             </tr>
             <tr>
-              <td className="leagueStats">平均試合時間</td>
-              <td className="leagueStats">{outputDuration}</td>
+              <td className="leagueStatsTdIndex">平均試合時間</td>
+              <td className="leagueStatsTdParam">{outputDuration}</td>
             </tr>
             <tr>
-              <td className="leagueStats">Radiant-Dire 勝率</td>
-              <td className="leagueStats">{outputRadiantWinrate}</td>
+              <td className="leagueStatsTdIndex">Radiant-Dire 勝率</td>
+              <td className="leagueStatsTdParam">{outputRadiantWinrate}</td>
             </tr>
           </tbody>
         </table>

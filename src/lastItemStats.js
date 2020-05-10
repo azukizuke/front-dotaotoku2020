@@ -13,20 +13,22 @@ export default class LastItemStats extends React.Component {
   static outputRow(itemIdArr, hero, itemDict) {
     const outputRow = itemIdArr.map(([itemId, count]) => {
       const countPercent = parseInt((count / hero.pickbans.pick) * 100, 10);
+      const colorAlpha = countPercent / 100;
+      const backgroundColor = `rgba(255, 0, 0, ${colorAlpha})`;
       return (
-        <tr>
-          <td>
-            {`${countPercent}%`}
-          </td>
-          <td>
-            <img
-              src={images.default[itemDict[itemId].img]}
-              alt={itemId}
-              value={itemId}
-              className="lastItemImage"
-            />
-          </td>
-        </tr>
+        <div
+          className="lastItemChildren"
+          style={{ backgroundColor }}
+        >
+          <img
+            src={images.default[itemDict[itemId].img]}
+            alt={itemId}
+            value={itemId}
+            className="lastItemImage"
+          />
+          <br />
+          {`${countPercent}%`}
+        </div>
       );
     });
     return outputRow;
@@ -41,17 +43,10 @@ export default class LastItemStats extends React.Component {
         <p>
           各アイテムに関して試合終了時に持っていた回数をpickされた回数で割ったものです
         </p>
-        <table>
-          <thead>
-            <tr>
-              <th>stats</th>
-              <th>item</th>
-            </tr>
-          </thead>
-          <tbody>
-            {outputRow}
-          </tbody>
-        </table>
+        <div className="lastItemParent">
+          <br />
+          {outputRow}
+        </div>
       </div>
     );
   }

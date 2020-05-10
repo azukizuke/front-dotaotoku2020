@@ -1,0 +1,23 @@
+.heroSkillImage {
+  width: 40px;
+  vertical-align: middle;
+}
+
+.heroSkillStatsTable{
+  text-align: center;
+}
+
+.heroSkillStats {
+  border: solid 1px;
+  min-height: 300px;
+  width: 40px;
+  text-align: center;
+  padding-right: 1px;
+}
+
+.heroSkillStatsTdImage {
+  border: solid 1px;
+  padding: 1px;
+  width: 10px;
+  text-align: center;
+}

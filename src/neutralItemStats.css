@@ -1,4 +1,16 @@
-img.neutralItemStatsImage{
+.neutralItemStatsImage{
   width: 35px;
-  height: 30px;
+  vertical-align: middle;
+}
+
+.neutralItemParent {
+  max-width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.neutralItemChildren {
+  padding: 0px 5px;
+  width: 40px;
+  text-align: center;
 }

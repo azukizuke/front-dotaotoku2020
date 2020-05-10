@@ -1,11 +1,12 @@
 @import url("./index.css");
 
 .sidenav {
-    height: 100%;
-    width: var(--sidebar-width);
-    position: fixed;
-    background-color: #696969;
-    padding: 0px;
+  height: 100%;
+  width: var(--sidebar-width);
+  position: fixed;
+  background-color: #696969;
+  padding: 0px;
+  overflow: auto;
 
 }
 

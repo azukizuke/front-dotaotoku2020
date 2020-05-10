@@ -33,6 +33,21 @@ export default class CompareLeague extends React.Component {
     return [topRank, bottomRank];
   }
 
+  static outputBar(percent, child, isBlue) {
+    const color = (isBlue) ? [0, 0, 255, 0.4] : [0, 255, 0, 0.5];
+    const backgroundColor = `rgba(${color[0]}, ${color[1]}, ${color[2]}, ${color[3]})`
+    return (
+      <div
+        className="compareLeagueBarGreen"
+        style={{
+          width: percent,
+          backgroundColor: backgroundColor,
+        }}
+      >
+        {child}
+      </div>
+    );
+  }
 
   constructor(props) {
     super(props);
@@ -52,30 +67,53 @@ export default class CompareLeague extends React.Component {
       const bottomHeroID = heroChangeRanking[1][i][0];
       const topPercent = heroChangeRanking[0][i][1];
       const bottomPercent = heroChangeRanking[1][i][1];
+
+      const topCurrentPercent = parseInt(
+        ((league.heroes[topHeroID].pickbans.all / league.match_num) * 100), 10,
+      );
+      const topPrePercent = parseInt(
+        ((preLeague.heroes[topHeroID].pickbans.all / preLeague.match_num) * 100), 10,
+      );
+      const bottomCurrentPercent = parseInt(
+        ((league.heroes[bottomHeroID].pickbans.all / league.match_num) * 100), 10,
+      );
+      const bottomPrePercent = parseInt(
+        ((preLeague.heroes[bottomHeroID].pickbans.all / preLeague.match_num) * 100), 10,
+      );
       outputRow.push(
         <tr>
-          <td>
+          <td className="compareLeagueNum">
             {i + 1}
           </td>
-          <td>
+          <td className="compareLeagueTdImage">
             <img
               onClick={this.handleClick}
               src={images.default[league.heroes[topHeroID].imagefile]}
               alt={topHeroID}
               className="compareLeagueImage"
             />
-            <br />
+          </td>
+          <td className="compareLeagueChange">
             {`+${topPercent}%`}
           </td>
-          <td>
+          <td className="compareLeagueBar">
+            {CompareLeague.outputBar(topPrePercent, `前:${topPrePercent}%`, true)}
+            {CompareLeague.outputBar(topCurrentPercent, `今:${topCurrentPercent}%`, false)}
+          </td>
+          <td className="compareLeagueImage">
             <img
               src={images.default[league.heroes[bottomHeroID].imagefile]}
               alt={bottomHeroID}
               className="compareLeagueImage"
               onClick={this.handleClick}
             />
-            <br />
+          </td>
+          <td className="compareLeagueChange">
             {`${bottomPercent}%`}
+          </td>
+          <td className="compareLeagueBar">
+            {CompareLeague.outputBar(bottomPrePercent, `前:${bottomPrePercent}%`, true)}
+            {CompareLeague.outputBar(bottomCurrentPercent, `今:${bottomCurrentPercent}%`, false)}
           </td>
         </tr>,
       );
@@ -99,9 +137,7 @@ export default class CompareLeague extends React.Component {
     return (
       <div>
         <p>
-          一つ前のリーグと比較し、pick + banのパーセンテージが大きいヒーローです。
-          <br />
-          取得期間での最終試合の日時でソーティングしてます
+          一つ前のリーグと比較し、pick + banのパーセンテージ変化が大きいヒーローです。
         </p>
         <p>
           {`比較リーグ：${preLeague.name}`}

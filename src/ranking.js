@@ -156,8 +156,8 @@ class Ranking extends React.Component {
       if (this.isFilterRole(heroid)) {
         row.push(
           <tr key={heroid}>
-            <td>{this.makeHeroImage(heroid)}</td>
-            <td>{this.makeStats(heroid)}</td>
+            <td className="rankingTdImage">{this.makeHeroImage(heroid)}</td>
+            <td className="rankingTdStats">{this.makeStats(heroid)}</td>
           </tr>,
         );
         counter += 1;
@@ -188,7 +188,7 @@ class Ranking extends React.Component {
               <th className="rankingTableHeader" colSpan="2">{title}</th>
             </tr>
             <tr>
-              <th className="rankingTableHeader">hero</th>
+              <th className="rankingTableHeaderImage">hero</th>
               <th className="rankingTableHeader">{outputStat}</th>
             </tr>
           </thead>

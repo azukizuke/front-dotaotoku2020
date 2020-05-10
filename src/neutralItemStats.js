@@ -14,19 +14,21 @@ export default class NeutralItemStats extends React.Component {
       const itemID = arr[0];
       const count = arr[1];
       const percent = parseInt((count / hero.pickbans.pick) * 100, 10);
+      const colorAlpha = percent / 100;
+      const backgroundColor = `rgba(255, 0, 0, ${colorAlpha})`
       return (
-        <tr>
-          <td>
-            <img
-              src={images.default[league.item_dict[itemID].img]}
-              alt={league.item_dict[itemID].name}
-              className="neutralItemStatsImage"
-            />
-          </td>
-          <td>
-            {`${percent}%`}
-          </td>
-        </tr>
+        <div
+          className="neutralItemChildren"
+          style={{  backgroundColor }}
+        >
+          <img
+            src={images.default[league.item_dict[itemID].img]}
+            alt={league.item_dict[itemID].name}
+            className="neutralItemStatsImage"
+          />
+          <br />
+          {`${percent}%`}
+        </ div>
       );
     });
   }
@@ -41,11 +43,9 @@ export default class NeutralItemStats extends React.Component {
         <p>
           試合終了時に所持しているニュートラルアイテムの所持率です
         </p>
-        <table>
-          <tbody>
-            {outputRow}
-          </tbody>
-        </table>
+        <div className="neutralItemParent">
+          {outputRow}
+        </div>
       </div>
     );
   }

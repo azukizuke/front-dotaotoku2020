@@ -30,7 +30,7 @@ export default class SkillStats extends React.Component {
     }
     return (
       <tr>
-        <th className="heroSkillStats">-</th>
+        <th className="heroSkillStatsTdImage">-</th>
         {headerLevelRow}
       </tr>
     );
@@ -64,7 +64,7 @@ export default class SkillStats extends React.Component {
         });
         outputRow.push(
           <tr>
-            <td className="heroSkillStats">
+            <td className="heroSkillStatsTdImage">
               <img
                 src={images.default[abilityDict[skillID].img]}
                 alt={skillID}
@@ -86,7 +86,7 @@ export default class SkillStats extends React.Component {
     const outputHeader = SkillStats.outputHeader(25);
     const outputRow = SkillStats.outputSkillBody(hero, league);
     return (
-      <table>
+      <table className="heroSkillStatsTable">
         <thead>
           {outputHeader}
         </thead>

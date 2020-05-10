@@ -1,5 +1,38 @@
-img.compareLeagueImage{
-    width: 50px;
-    height: 30px;
-    cursor: pointer;
+.compareLeagueImage{
+  width: 50px;
+  height: 30px;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.compareLeagueBarParent {
+  display: flex;
+  height: 10px;
+  width: 100%;
+  background-color: rgba(100,100,100,255);
+}
+
+.compareLeagueBarGreen {
+  background-color: rgba(0,255,0,255);
+  height: 20px;
+  font-size: 14px;
+}
+
+.compareLeagueNum {
+  text-align: center;
+  width: 25px;
+}
+
+.compareLeagueTdImage {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.compareLeagueChange {
+  width: 50px;
+  text-align: center;
+}
+
+.compareLeagueBar {
+  width: 100px;
 }
