@@ -1,14 +1,15 @@
 import React from 'react';
 // eslint-disable-next-line
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 import RankingTable from './ranking';
 import SideNav from './sidenav';
 import CollapsibleMenu from './collapsiblemenu';
 import * as serviceWorker from './serviceWorker';
 import Hero from './hero';
 import LeagueStats from './leagueStats';
-import CompareLeague from './compareLeague'
-import AllHeroLayout from './allHeroLayout'
+import CompareLeague from './compareLeague';
+import AllHeroLayout from './allHeroLayout';
 // css
 import './index.css';
 import './sidenav.css';
@@ -20,14 +21,17 @@ import './lastItemStats.css';
 import './startItemStats.css';
 import './neutralItemStats.css';
 import './purchaseStats.css';
-import './compareLeague.css'
-import './allHeroLayout.css'
-import './leagueStats.css'
+import './compareLeague.css';
+import './allHeroLayout.css';
+import './leagueStats.css';
 
 class LeagueRoot extends React.Component {
-  static makeStartPage() {
+  static makeStartPage(sideWidth) {
     return (
-      <div className="main">
+      <div
+        className="main"
+        style={{ marginLeft: sideWidth }}
+      >
         <h1>ウルトラお得情報ロボ2</h1>
         <p>
           もともと色々やっていたやつを作り直したくなったのでやっています。
@@ -74,10 +78,23 @@ class LeagueRoot extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = this.props;
+    const {
+      allleaguejson,
+      heroid,
+      leagueid,
+      isHeroPage,
+    } = this.props;
+    this.state = {
+      allleaguejson,
+      heroid,
+      leagueid,
+      isHeroPage,
+      isSideOpen: true,
+    };
     this.handleLeagueChange = this.handleLeagueChange.bind(this);
     this.makeLeagueOutput = this.makeLeagueOutput.bind(this);
     this.handleClickHero = this.handleClickHero.bind(this);
+    this.handleSideOpen = this.handleSideOpen.bind(this);
     this.handleClickHeroOverLay = this.handleClickHeroOverLay.bind(this);
   }
 
@@ -91,6 +108,11 @@ class LeagueRoot extends React.Component {
     this.setState({ leagueid });
   }
 
+  handleSideOpen() {
+    const { isSideOpen } = this.state;
+    this.setState({ isSideOpen: !isSideOpen });
+  }
+
   handleClickHero(heroid) {
     this.setState({ heroid });
     this.setState({ isHeroPage: true });
@@ -101,10 +123,13 @@ class LeagueRoot extends React.Component {
     this.setState({ isHeroPage: false });
   }
 
-  makeLeagueOutput() {
+  makeLeagueOutput(sideWidth) {
     const { allleaguejson, leagueid } = this.state;
     return (
-      <div className="main">
+      <div
+        className="main"
+        style={{ marginLeft: sideWidth }}
+      >
         <LeagueStats league={allleaguejson[leagueid]} />
         <h3>ヒーローアイコンをクリックすると色々見れるようにしました 随時追加していきます</h3>
         <CollapsibleMenu title="PickBan ランキング" buttonClass="buttonMainBorder">
@@ -116,7 +141,7 @@ class LeagueRoot extends React.Component {
         <CollapsibleMenu title="リーグ比較" buttonClass="buttonMainBorder">
           <CompareLeague
             league={allleaguejson[leagueid]}
-            allLeagueDict = {allleaguejson}
+            allLeagueDict={allleaguejson}
             onClickHero={this.handleClickHero}
           />
         </CollapsibleMenu>
@@ -136,12 +161,14 @@ class LeagueRoot extends React.Component {
       leagueid,
       heroid,
       isHeroPage,
+      isSideOpen,
     } = this.state;
+    const sideWidth = isSideOpen ? '20%' : '5%';
     let mainpage;
     if (leagueid === 'startpage') {
-      mainpage = LeagueRoot.makeStartPage();
+      mainpage = LeagueRoot.makeStartPage(sideWidth);
     } else {
-      mainpage = this.makeLeagueOutput();
+      mainpage = this.makeLeagueOutput(sideWidth);
     }
 
     return (
@@ -150,6 +177,9 @@ class LeagueRoot extends React.Component {
           allleaguejson={allleaguejson}
           leagueid={leagueid}
           onLeagueChange={this.handleLeagueChange}
+          handleSideOpen={this.handleSideOpen}
+          isSideOpen={isSideOpen}
+          sideWidth={sideWidth}
         />
         {mainpage}
         <Hero
@@ -162,6 +192,20 @@ class LeagueRoot extends React.Component {
     );
   }
 }
+
+LeagueRoot.defaultProps = {
+  allleaguejson: {},
+  heroid: 0,
+  leagueid: 0,
+  isHeroPage: false,
+};
+
+LeagueRoot.propTypes = {
+  allleaguejson: PropTypes.object,
+  heroid: PropTypes.number,
+  leagueid: PropTypes.number,
+  isHeroPage: PropTypes.bool,
+};
 
 const allleaguejson = require('./test.json');
 

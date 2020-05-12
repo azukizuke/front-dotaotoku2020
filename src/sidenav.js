@@ -1,17 +1,51 @@
 import React from 'react';
+// eslint-disable-next-line
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import CollapsibleMenu from './collapsiblemenu';
 
 export default class SideNav extends React.Component {
-  render() {
-    const { allleaguejson, onLeagueChange } = this.props;
+  static outputLeagueIndex(isSideOpen) {
     return (
-      <div className="sidenav">
-        <p>league index</p>
+      isSideOpen ? '<< League Index'
+        : '>>'
+    );
+  }
+
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    const { handleSideOpen } = this.props;
+    handleSideOpen();
+  }
+
+  render() {
+    const {
+      allleaguejson,
+      onLeagueChange,
+      isSideOpen,
+      sideWidth
+    } = this.props;
+    const outputLeagueIndex = SideNav.outputLeagueIndex(isSideOpen);
+    return (
+      <div
+        className="sidenav"
+        style={{ width: sideWidth }}
+      >
+        <button
+          type="button"
+          className="sidenavButtonIndex"
+          onClick={this.handleClick}
+        >
+          {outputLeagueIndex}
+        </button>
         <MakeLeagueList
           allleaguejson={allleaguejson}
           onLeagueChange={onLeagueChange}
+          value="sideIndexHandle"
         />
       </div>
     );

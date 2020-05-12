@@ -9,11 +9,14 @@ export default class StartItemStats extends React.Component {
     return Object.entries(startItemStats).sort((a, b) => (b[1].count) - a[1].count);
   }
 
-  static outputSkillArr(startItemArr, league) {
+  static outputSkillArr(startItemArr, league, backgroundColor) {
     return startItemArr.map((itemId) => {
       const itemImageName = league.item_dict[itemId].img;
       return (
-        <td>
+        <td
+          className="startItemStatsTdImage"
+          style={{ backgroundColor }}
+        >
           <img
             src={images.default[itemImageName]}
             alt={itemId}
@@ -29,12 +32,19 @@ export default class StartItemStats extends React.Component {
     const outputRow = sortedArr.map((arr) => {
       const dict = arr[1];
       const percent = parseInt((dict.count / hero.pickbans.pick) * 100, 10);
+      const backgroundColor = `rgba(255, 0, 0, ${percent/100})`
       return (
-        <tr>
-          <td>
+        <tr
+          className="startItemStatsTr"
+          style={{ backgroundColor }}
+        >
+          <td
+            className="startItemStatsTdParam"
+            style={{ backgroundColor }}
+          >
             {`${percent}%`}
           </td>
-          {StartItemStats.outputSkillArr(dict.startitems, league)}
+          {StartItemStats.outputSkillArr(dict.startitems, league, backgroundColor)}
         </tr>
       );
     });
@@ -53,7 +63,7 @@ export default class StartItemStats extends React.Component {
           <br />
           貰ったり売ったりした場合のデータは正常に取得ができていないので、おかしそうな部分が出ちゃいます。
         </p>
-        <table>
+        <table className="startItemStatsTable">
           <tbody>
             {outputRow}
           </tbody>

@@ -1,3 +1,8 @@
+:root {
+  --pickbanBarHeight: 15px;
+  --pickbanBarFontSize: 10px;
+}
+
 .pickban_ranking{
   display: flex;
   border: 0px solid #666;
@@ -11,19 +16,21 @@
 
 .pickBanBar {
   display: flex;
-  height: 10px;
+  height: var(--pickbanBarHeight);
   width: 100%;
-  background-color: rgba(100,100,100,255);
+  background-color: transparent;
 }
 
 .pickBar {
   background-color: rgba(0,255,0,255);
-  height: 10px;
+  height: var(--pickbanBarHeight);
+  font-size: var(--pickbanBarFontSize);
+  text-align: center;
 }
 
 .banBar {
   background-color: rgba(255,0,0,255);
-  height: 10px;
+  height: var(--pickbanBarHeight);
 }
 
 .rankingOdd {

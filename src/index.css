@@ -1,5 +1,6 @@
 :root {
-    --sidebar-width: 20%;
+  --sidebar-width: 20%;
+  --pickbanBarHeight: 10px;
 }
 
 body {

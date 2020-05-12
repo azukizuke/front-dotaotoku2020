@@ -23,7 +23,7 @@ export default class TalentStats extends React.Component {
         const color = `rgba(250,50,50,${percent / 100})`;
         return (
           <td
-            className="talentStats"
+            className="talentStatsTd"
             style={{ backgroundColor: color }}
           >
             {talentName}
@@ -64,7 +64,7 @@ export default class TalentStats extends React.Component {
           <br />
           大会中でのアップデートによるタレント変更や、僕が大本の情報を更新していないときに発生します。ごめんね。
         </p>
-        <table>
+        <table className="talentStatsTable">
           {outputTalentStats}
         </table>
       </div>

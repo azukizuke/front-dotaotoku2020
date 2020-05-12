@@ -1,5 +1,8 @@
-td.talentStats {
+.talentStatsTd {
   text-align: center;
   padding: 1px;
   border: solid 1px;
+}
+
+.talentStatsTable {
 }

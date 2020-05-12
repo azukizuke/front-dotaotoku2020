@@ -1,4 +1,25 @@
-img.startItemImage{
-    width: 35px;
-    height: 30px;
+.startItemImage {
+  width: 35px;
+  height: 26px;
+  vertical-align: middle;
+}
+
+.startItemStatsTdImage {
+  vertical-align: middle;
+  padding: 3px 1px;
+  border: solid 0px;
+}
+
+.startItemStatsTdParam {
+  vertical-align: middle;
+  border: solid 0px;
+}
+
+.startItemStatsTable {
+  background-color: transparent;
+  border: solid 0px;
+}
+
+.startItemStatsTr {
+  border: solid 0px;
 }

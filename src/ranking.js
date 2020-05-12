@@ -34,7 +34,9 @@ export default class RankingTable extends React.Component {
           緑がpick 赤がban
         </p>
         <p>
-          それ以外は、各roleとしてpickされた回数を表示してます。pickのみ。
+          右4列は、各roleとしてpickされた回数を表示してます。パーセンテージはそのroleとしてpickされたのみ。緑色のバーです
+          <br />
+          あとその下の汚いbarは各role毎のpick割合を出そうといま色々してます。ちょっとすごいごちゃごちゃしてますが。どうにかうまいこと表現できないもんか
           <br />
           roleは自動で判定しています。
         </p>
@@ -70,11 +72,45 @@ class Ranking extends React.Component {
     return sortedKeys;
   }
 
-  static makePickBanBar(percentAll, percentPick, percentBan) {
+  static makePickBanBar(percentAll, percentPick, percentBan, inputStr) {
     return (
       <div className="pickBanBar" style={{ width: `${percentAll}%` }}>
-        <div className="pickBar" style={{ flexGrow: percentPick }} />
+        <div className="pickBar" style={{ flexGrow: percentPick }}>
+          {inputStr}
+        </div>
         <div className="banBar" style={{ flexGrow: percentBan }} />
+      </div>
+    );
+  }
+
+  static makeRoleBarChild(percentPos,color,str) {
+    let outputStr;
+    if (percentPos < 200) {
+      outputStr = ""
+    } else {
+      outputStr = str
+    }
+    return (
+      <div
+        className="pickBar"
+        style={{ flexGrow: percentPos, backgroundColor: color }}
+      />
+    )
+  }
+
+  static makeRoleBar(hero, matchNum, percentPick) {
+    const percentPos1 = parseInt((hero.pickbans.pos1 / hero.pickbans.pick) * 100, 10);
+    const percentPos2 = parseInt((hero.pickbans.pos2 / hero.pickbans.pick) * 100, 10);
+    const percentPos3 = parseInt((hero.pickbans.pos3 / hero.pickbans.pick) * 100, 10);
+    const percentPos4 = parseInt((hero.pickbans.pos4 / hero.pickbans.pick) * 100, 10);
+    const percentPos5 = parseInt((hero.pickbans.pos5 / hero.pickbans.pick) * 100, 10);
+    return (
+      <div className="pickBanBar" style={{ width: `${percentPick}%` }}>
+        {Ranking.makeRoleBarChild(percentPos1, 'rgba(255,102,102,1)' ,1)}
+        {Ranking.makeRoleBarChild(percentPos2, 'rgba(102,0,255,1)', 2)}
+        {Ranking.makeRoleBarChild(percentPos3, 'rgba(51,153,255,1)', 3)}
+        {Ranking.makeRoleBarChild(percentPos4, 'rgba(102,51,0,1)', 4)}
+        {Ranking.makeRoleBarChild(percentPos5, 'rgba(255,0,255,1)', 5)}
       </div>
     );
   }
@@ -120,6 +156,7 @@ class Ranking extends React.Component {
     const percentPick = parseInt((herojson[heroid].pickbans.pick * 100) / matchNum, 10);
     const percentBan = parseInt((herojson[heroid].pickbans.ban * 100) / matchNum, 10);
     const percentRole = parseInt((herojson[heroid].pickbans[pbkey] * 100) / matchNum, 10);
+    const hero = herojson[heroid];
 
     const strAll = `${percentAll}%`;
     const strPick = `${percentPick}%`;
@@ -141,6 +178,7 @@ class Ranking extends React.Component {
         <ul>
           <li>{strRole}</li>
           <li>{Ranking.makePickBanBar(percentRole, percentRole, 0)}</li>
+          <li>{Ranking.makeRoleBar(hero, matchNum, percentPick)}</li>
         </ul>
       </div>
     );

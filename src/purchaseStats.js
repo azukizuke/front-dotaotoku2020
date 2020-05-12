@@ -12,8 +12,12 @@ export default class PurchaseStats extends React.Component {
   static outputItemRow(hero, league, arr) {
     return arr.map(([itemID, count]) => {
       const percent = parseInt((count / hero.pickbans.pick) * 100, 10);
+      const backgroundColor = `rgba(255, 0, 0, ${percent / 100})`
       return (
-        <td>
+        <td
+          className="purchaseStatsTdParam"
+          style={{ backgroundColor }}
+        >
           <img
             src={images.default[league.item_dict[itemID].img]}
             alt={league.item_dict[itemID].name}
@@ -33,10 +37,10 @@ export default class PurchaseStats extends React.Component {
       const sortedDict = PurchaseStats.sortedDict(purchaseDict);
       const outputItemRow = PurchaseStats.outputItemRow(hero, league, sortedDict);
       return (
-        <table>
+        <table className="purchaseStatsTable">
           <tbody>
             <tr>
-              <td>
+              <td className="purchaseStatsTdNum">
                 {`${Number(order) + 1}番目`}
               </td>
               {outputItemRow}
