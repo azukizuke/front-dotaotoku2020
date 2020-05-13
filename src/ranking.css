@@ -28,6 +28,14 @@
   text-align: center;
 }
 
+.winBar {
+  background-color: rgba(0,255,0,255);
+  height: var(--pickbanBarHeight);
+  font-size: var(--pickbanBarFontSize);
+  text-align: left;
+  white-space: nowrap;
+}
+
 .banBar {
   background-color: rgba(255,0,0,255);
   height: var(--pickbanBarHeight);

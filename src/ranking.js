@@ -6,7 +6,7 @@ import * as images from './image';
 
 export default class RankingTable extends React.Component {
   makeRankingRender(key, title, mode, tableClass) {
-    const { leaguejson, onClickHero } = this.props;
+    const { leaguejson, onClickHero, handleHover } = this.props;
     return (
       <div className="pickban_ranking_items">
         <Ranking
@@ -19,6 +19,7 @@ export default class RankingTable extends React.Component {
           tableClass={tableClass}
           rank={10}
           onClickHero={onClickHero}
+          handleHover={handleHover}
         />
       </div>
     );
@@ -56,11 +57,13 @@ export default class RankingTable extends React.Component {
 RankingTable.defaultProps = {
   leaguejson: false,
   onClickHero: undefined,
+  handleHover: undefined,
 };
 
 RankingTable.propTypes = {
   leaguejson: PropTypes.objectOf(PropTypes.number),
   onClickHero: PropTypes.func,
+  handleHover: PropTypes.func,
 };
 
 
@@ -83,19 +86,13 @@ class Ranking extends React.Component {
     );
   }
 
-  static makeRoleBarChild(percentPos,color,str) {
-    let outputStr;
-    if (percentPos < 200) {
-      outputStr = ""
-    } else {
-      outputStr = str
-    }
+  static makeRoleBarChild(percentPos, color) {
     return (
       <div
         className="pickBar"
         style={{ flexGrow: percentPos, backgroundColor: color }}
       />
-    )
+    );
   }
 
   static makeRoleBar(hero, matchNum, percentPick) {
@@ -106,11 +103,50 @@ class Ranking extends React.Component {
     const percentPos5 = parseInt((hero.pickbans.pos5 / hero.pickbans.pick) * 100, 10);
     return (
       <div className="pickBanBar" style={{ width: `${percentPick}%` }}>
-        {Ranking.makeRoleBarChild(percentPos1, 'rgba(255,102,102,1)' ,1)}
+        {Ranking.makeRoleBarChild(percentPos1, 'rgba(255,102,102,1)', 1)}
         {Ranking.makeRoleBarChild(percentPos2, 'rgba(102,0,255,1)', 2)}
         {Ranking.makeRoleBarChild(percentPos3, 'rgba(51,153,255,1)', 3)}
         {Ranking.makeRoleBarChild(percentPos4, 'rgba(102,51,0,1)', 4)}
         {Ranking.makeRoleBarChild(percentPos5, 'rgba(255,0,255,1)', 5)}
+      </div>
+    );
+  }
+
+  static makeWinBar(hero) {
+    const winPercent = parseInt((hero.win_stats / hero.pickbans.pick) * 100, 10);
+    const backgroundColor = 'rgba(0,0,255,0.2)';
+    return (
+      <div
+        className="winBar"
+        style={{
+          backgroundColor,
+          width: `${winPercent}%`,
+        }}
+      >
+        勝率: {winPercent}%
+      </div>
+    );
+  }
+
+  static makeHoverStr(percentPos1, percentPos2, percentPos3, percentPos4, percentPos5) {
+    return (
+      <div>
+        各roleの割合
+        <div style={{ backgroundColor: `rgba(255,0,0,${percentPos1 / 100})` }}>
+          {`pos1: ${percentPos1}%`}
+        </div>
+        <div style={{ backgroundColor: `rgba(255,0,0,${percentPos2 / 100})` }}>
+          {`pos2: ${percentPos2}%`}
+        </div>
+        <div style={{ backgroundColor: `rgba(255,0,0,${percentPos3 / 100})` }}>
+          {`pos3: ${percentPos3}%`}
+        </div>
+        <div style={{ backgroundColor: `rgba(255,0,0,${percentPos4 / 100})` }}>
+          {`pos4: ${percentPos4}%`}
+        </div>
+        <div style={{ backgroundColor: `rgba(255,0,0,${percentPos5 / 100})` }}>
+          {`pos5: ${percentPos5}%`}
+        </div>
       </div>
     );
   }
@@ -121,6 +157,8 @@ class Ranking extends React.Component {
     this.isFilterRole = this.isFilterRole.bind(this);
     this.makeStats = this.makeStats.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleMouseOver = this.handleMouseOver.bind(this);
+    this.handleMouseOut = this.handleMouseOut.bind(this);
   }
 
   isFilterRole(heroid) {
@@ -134,6 +172,36 @@ class Ranking extends React.Component {
   handleClick(e) {
     const { onClickHero } = this.props;
     onClickHero(e.target.alt);
+  }
+
+  handleMouseOver(e) {
+    const { handleHover } = this.props;
+    const percentPos1 = (e.currentTarget.getAttribute('data-pos1'));
+    const percentPos2 = (e.currentTarget.getAttribute('data-pos2'));
+    const percentPos3 = (e.currentTarget.getAttribute('data-pos3'));
+    const percentPos4 = (e.currentTarget.getAttribute('data-pos4'));
+    const percentPos5 = (e.currentTarget.getAttribute('data-pos5'));
+    const info = {
+      pageX: e.pageX,
+      pageY: e.pageY,
+    };
+    const value = Ranking.makeHoverStr(
+      percentPos1,
+      percentPos2,
+      percentPos3,
+      percentPos4,
+      percentPos5,
+    );
+    handleHover(true, [info, value]);
+  }
+
+  handleMouseOut(e) {
+    const { handleHover } = this.props;
+    const info = {
+      pageX: e.pageX,
+      pageY: e.pageY,
+    };
+    handleHover(false, [info, 'test']);
   }
 
   makeHeroImage(heroid) {
@@ -152,34 +220,48 @@ class Ranking extends React.Component {
 
   makeStats(heroid) {
     const { herojson, matchNum, pbkey } = this.props;
+    const hero = herojson[heroid];
     const percentAll = parseInt((herojson[heroid].pickbans.all * 100) / matchNum, 10);
     const percentPick = parseInt((herojson[heroid].pickbans.pick * 100) / matchNum, 10);
     const percentBan = parseInt((herojson[heroid].pickbans.ban * 100) / matchNum, 10);
     const percentRole = parseInt((herojson[heroid].pickbans[pbkey] * 100) / matchNum, 10);
-    const hero = herojson[heroid];
+    const percentPos1 = parseInt((hero.pickbans.pos1 / hero.pickbans.pick) * 100, 10);
+    const percentPos2 = parseInt((hero.pickbans.pos2 / hero.pickbans.pick) * 100, 10);
+    const percentPos3 = parseInt((hero.pickbans.pos3 / hero.pickbans.pick) * 100, 10);
+    const percentPos4 = parseInt((hero.pickbans.pos4 / hero.pickbans.pick) * 100, 10);
+    const percentPos5 = parseInt((hero.pickbans.pos5 / hero.pickbans.pick) * 100, 10);
+    const winPercent = parseInt((hero.win_stats / hero.pickbans.pick) * 100, 10);
 
     const strAll = `${percentAll}%`;
     const strPick = `${percentPick}%`;
     const strBan = `${percentBan}%`;
     const strRole = `${percentRole}%`;
+    const strWin = Ranking.makeWinBar(hero);
 
     if (pbkey === 'all') {
       return (
         <div>
-          <ul>
-            <li>{`${strAll}-${strPick}-${strBan}`}</li>
-            <li>{Ranking.makePickBanBar(percentAll, percentPick, percentBan)}</li>
-          </ul>
+          <div>{`${strAll}-${strPick}-${strBan}`}</div>
+          <div>{Ranking.makePickBanBar(percentAll, percentPick, percentBan)}</div>
+          <div>{strWin}</div>
         </div>
       );
     }
     return (
-      <div>
-        <ul>
-          <li>{strRole}</li>
-          <li>{Ranking.makePickBanBar(percentRole, percentRole, 0)}</li>
-          <li>{Ranking.makeRoleBar(hero, matchNum, percentPick)}</li>
-        </ul>
+      <div
+        data-value={strRole}
+        data-pos1={percentPos1}
+        data-pos2={percentPos2}
+        data-pos3={percentPos3}
+        data-pos4={percentPos4}
+        data-pos5={percentPos5}
+        onMouseOver={this.handleMouseOver}
+        onMouseMove={this.handleMouseOver}
+        onMouseOut={this.handleMouseOut}
+      >
+        <div>{strRole}</div>
+        <div>{Ranking.makePickBanBar(percentRole, percentRole, 0)}</div>
+        <div>{Ranking.makeRoleBar(hero, matchNum, percentPick)}</div>
       </div>
     );
   }
@@ -249,6 +331,7 @@ Ranking.defaultProps = {
   title: '',
   matchNum: 0,
   onClickHero: undefined,
+  handleHover: undefined,
 };
 
 Ranking.propTypes = {
@@ -261,4 +344,5 @@ Ranking.propTypes = {
   rank: PropTypes.number,
   tableClass: PropTypes.string,
   onClickHero: PropTypes.func,
+  handleHover: PropTypes.func,
 };

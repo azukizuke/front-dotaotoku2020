@@ -178,3 +178,4 @@ Hero.propTypes = {
   isHeroPage: PropTypes.bool,
   onClickOverLay: PropTypes.func,
 };
+

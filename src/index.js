@@ -10,6 +10,7 @@ import Hero from './hero';
 import LeagueStats from './leagueStats';
 import CompareLeague from './compareLeague';
 import AllHeroLayout from './allHeroLayout';
+import HoverStats from './hoverStats';
 // css
 import './index.css';
 import './sidenav.css';
@@ -24,6 +25,7 @@ import './purchaseStats.css';
 import './compareLeague.css';
 import './allHeroLayout.css';
 import './leagueStats.css';
+import './hoverStats.css';
 
 class LeagueRoot extends React.Component {
   static makeStartPage(sideWidth) {
@@ -90,12 +92,15 @@ class LeagueRoot extends React.Component {
       leagueid,
       isHeroPage,
       isSideOpen: true,
+      isHover: false,
+      hoverValue: null,
     };
     this.handleLeagueChange = this.handleLeagueChange.bind(this);
     this.makeLeagueOutput = this.makeLeagueOutput.bind(this);
     this.handleClickHero = this.handleClickHero.bind(this);
     this.handleSideOpen = this.handleSideOpen.bind(this);
     this.handleClickHeroOverLay = this.handleClickHeroOverLay.bind(this);
+    this.handleHover = this.handleHover.bind(this);
   }
 
   static getDatefromUNIX(unixdate) {
@@ -106,6 +111,19 @@ class LeagueRoot extends React.Component {
 
   handleLeagueChange(leagueid) {
     this.setState({ leagueid });
+  }
+
+  handleHover(isHover, value) {
+    const pageX = value[0].pageX - document.documentElement.scrollLeft
+    const pageY = value[0].pageY - document.documentElement.scrollTop
+    const fixInfo = {
+      pageX,
+      pageY,
+    }
+    this.setState({
+      isHover,
+      hoverValue: [fixInfo, value[1]],
+    });
   }
 
   handleSideOpen() {
@@ -136,6 +154,7 @@ class LeagueRoot extends React.Component {
           <RankingTable
             leaguejson={allleaguejson[leagueid]}
             onClickHero={this.handleClickHero}
+            handleHover={this.handleHover}
           />
         </CollapsibleMenu>
         <CollapsibleMenu title="リーグ比較" buttonClass="buttonMainBorder">
@@ -162,6 +181,8 @@ class LeagueRoot extends React.Component {
       heroid,
       isHeroPage,
       isSideOpen,
+      isHover,
+      hoverValue,
     } = this.state;
     const sideWidth = isSideOpen ? '20%' : '5%';
     let mainpage;
@@ -187,6 +208,10 @@ class LeagueRoot extends React.Component {
           league={allleaguejson[leagueid]}
           isHeroPage={isHeroPage}
           onClickOverLay={this.handleClickHeroOverLay}
+        />
+        <HoverStats
+          isHover={isHover}
+          hoverValue={hoverValue}
         />
       </div>
     );
