@@ -118,6 +118,7 @@ import grimstroke_full from './media/heroes/grimstroke_full.png';
 import void_spirit_full from './media/heroes/void_spirit_full.png';
 import snapfire_full from './media/heroes/snapfire_full.png';
 import mars_full from './media/heroes/mars_full.png';
+import hoodwink_full from './media/heroes/hoodwink_full.png';
 // abilities
 import abaddon_aphotic_shield_lg from './media/abilities/abaddon_aphotic_shield_lg.png';
 import abaddon_borrowed_time_lg from './media/abilities/abaddon_borrowed_time_lg.png';
@@ -1135,6 +1136,7 @@ export default {
   void_spirit_full,
   snapfire_full,
   mars_full,
+  hoodwink_full,
   // Abilities
   abaddon_aphotic_shield_lg,
   abaddon_borrowed_time_lg,
